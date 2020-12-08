@@ -34,12 +34,24 @@ class MainActivity : AppCompatActivity() {
         // Update the screen with the dice roll
         var diceImage: ImageView = findViewById(R.id.imageView)
         when (diceRoll) {
-            //1 -> diceImage.setImageResource(R.drawable.dice_1)
+            1 -> diceImage.setImageResource(R.drawable.dice_1)
             2 -> diceImage.setImageResource(R.drawable.dice_2)
             3 -> diceImage.setImageResource(R.drawable.dice_3)
             4 -> diceImage.setImageResource(R.drawable.dice_4)
             5 -> diceImage.setImageResource(R.drawable.dice_5)
             6 -> diceImage.setImageResource(R.drawable.dice_6)
+
+
+        }
+        var theTextView: TextView = findViewById(R.id.textView2);
+        when(diceRoll)
+        {
+            1 -> theTextView.setText("You have rolled a 1")
+            2 -> theTextView.setText("You have rolled a 2")
+            3 -> theTextView.setText("You have rolled a 3")
+            4 -> theTextView.setText("You have rolled a 4")
+            5 -> theTextView.setText("You have rolled a 5")
+            6 -> theTextView.setText("You have rolled a 6")
         }
 
     }
