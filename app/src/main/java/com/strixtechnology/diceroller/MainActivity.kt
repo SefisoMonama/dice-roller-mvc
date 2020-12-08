@@ -43,7 +43,9 @@ class MainActivity : AppCompatActivity() {
 
 
         }
+        var count=0;
         var theTextView: TextView = findViewById(R.id.textView2);
+        var textViewThree: TextView = findViewById(R.id.textView3);
         when(diceRoll)
         {
             1 -> theTextView.setText("You have rolled a 1")
@@ -54,6 +56,24 @@ class MainActivity : AppCompatActivity() {
             6 -> theTextView.setText("You have rolled a 6")
         }
 
+            if (diceRoll==1){
+                textViewThree.setText("you have displayed ${diceRoll}: ${count++} times")
+            }
+            else if(diceRoll==2){
+                textViewThree.setText("you have displayed ${diceRoll}: ${count++} times")
+            }
+            else if(diceRoll==3){
+                textViewThree.setText("you have displayed ${diceRoll}: ${count++} times")
+            }
+            else if(diceRoll==4){
+                textViewThree.setText("you have displayed ${diceRoll}: ${count++} times")
+            }
+            else if(diceRoll==5){
+                textViewThree.setText("you have displayed ${diceRoll}: ${count++} times")
+            }
+            else if(diceRoll==6){
+                textViewThree.setText("you have displayed ${diceRoll}: ${count++} times")
+            }
     }
 }
 
