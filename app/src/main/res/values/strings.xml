@@ -2,4 +2,6 @@
     <string name="app_name">Dice Roller</string>
     <string name="roll">Roll</string>
     <string name="todo">TODO</string>
+    <string name="todo2">TODO2</string>
+    <string name="TextView">TextView</string>
 </resources>

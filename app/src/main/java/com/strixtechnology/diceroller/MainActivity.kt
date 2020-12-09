@@ -18,24 +18,43 @@ class MainActivity : AppCompatActivity() {
         // Find the Button in the layout
         val rollButton: Button = findViewById(R.id.rollDiceButton)
 
+
         // Set a click listener on the button to roll the dice when the user taps the button
         rollButton.setOnClickListener { rollDice() }
     }
 
     // Create new Dice object with 6 sides and roll it
     var dice = Dice(6)
+    var dice2 = Dice(6)
 
     private fun rollDice() {
         dice.roll()
+        dice2.roll()
 
         // Update the screen with the dice roll
         var diceImageView: ImageView = findViewById(R.id.diceImage)
-        var currentValueTextView: TextView = findViewById(R.id.numberRolled);
-        var streakTextView: TextView = findViewById(R.id.numberAppearanceValue);
+        var secondDiceImageView: ImageView = findViewById(R.id.secondDiceImage)
+        var sumValueView: TextView = findViewById(R.id.sumValue);
+        var rollCountView: TextView = findViewById(R.id.numberAppearanceValue);
+        var doubleNumberView: TextView=findViewById(R.id.sameNumber)
 
         diceImageView.setImageResource(dice.getDiceImageResource())
-        currentValueTextView.text = "You have rolled a ${dice.currentDiceValue}"
-        streakTextView.text = "You have rolled a ${dice.currentDiceValue} : ${dice.sameRollValueStreak} times"
+        secondDiceImageView.setImageResource(dice2.getDiceImageResource())
+        sumValueView.text = "sum of Dices: ${dice.currentDiceValue + dice2.currentDiceValue}"
+        rollCountView.text = "You have rolled ${dice.rollCount} time/s"
+
+        //Compare 2 Values on the dices to see if their the same
+        if(dice.currentDiceValue==dice2.currentDiceValue)
+        {
+            doubleNumberView.text= "Woohoo! you've rolled double numbers"
+        }
+        else{
+            doubleNumberView.text= " "
+        }
+
+
+
+
     }
 
     /**
@@ -44,28 +63,19 @@ class MainActivity : AppCompatActivity() {
     class Dice(private val numSides: Int) {
         //Declare and Initialize dice variables
         var currentDiceValue: Int = 0
-        var previousDiceValue: Int = 0
         var rollCount: Int = 0
-        //Initialize streak Value to 1, it counts for the first time it appears
-        var sameRollValueStreak: Int = 1
 
 
         /**
          * Do a random dice roll and return the result.
          */
         fun roll() {
-            rollCount++
-            //current value will be stored in previous Value as you roll the dice
-            previousDiceValue = currentDiceValue
             currentDiceValue =  (1..numSides).random()
-
-            //if previous value is equal the current, samerollValue will increment by 1 else it will be reset to 1;
-            if (previousDiceValue == currentDiceValue){
-                sameRollValueStreak++
-            }else{
-                sameRollValueStreak = 1
-            }
+            rollCount++;
         }
+
+
+
 
         //Stores Image Resources
         fun getDiceImageResource(): Int {
