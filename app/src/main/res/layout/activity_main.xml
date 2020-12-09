@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/diceImage"
         android:layout_width="160dp"
         android:layout_height="200dp"
         android:contentDescription="@string/todo"
@@ -21,32 +21,32 @@
         tools:srcCompat="@drawable/dice_2" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/rollDiceButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/roll"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/diceImage" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/numberRolled"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView"
+        app:layout_constraintBottom_toTopOf="@+id/diceImage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:text="TextView2" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/numberAppearanceValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_constraintTop_toBottomOf="@+id/rollDiceButton"
         tools:text="textView3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
