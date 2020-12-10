@@ -15,13 +15,29 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        var currentDiceValue: Int = 0
+        var rollCount: Int = 0
+
+
+        /**
+         * Do a random dice roll and return the result.
+         */
+        fun roll() {
+            currentDiceValue =  (1..numSides).random()
+            rollCount++;
+        }
 
         // Find the Button in the layout
         val rollButton: Button = findViewById(R.id.rollDiceButton)
 
 
         // Set a click listener on the button to roll the dice when the user taps the button
-        rollButton.setOnClickListener { rollDice() }
+        rollButton.setOnClickListener {rollDice()}
+
+
+
+
+
     }
 
     // Create new Dice object with 6 sides and roll it
@@ -31,6 +47,10 @@ class MainActivity : AppCompatActivity() {
     private fun rollDice() {
         dice.roll()
         dice2.roll()
+        setViewContents()
+    }
+
+    fun setViewContents(){
 
         // Update the screen with the dice roll
         var diceImageView: ImageView = findViewById(R.id.diceImage)
@@ -52,8 +72,6 @@ class MainActivity : AppCompatActivity() {
         else{
             doubleNumberView.text= " "
         }
-
-
 
 
     }
@@ -78,6 +96,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
+
         //Stores Image Resources
         fun getDiceImageResource(): Int {
             return when (currentDiceValue) {
@@ -97,13 +116,18 @@ class MainActivity : AppCompatActivity() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        val rollButton: Button = findViewById(R.id.rollDiceButton);
-        rollButton.setOnClickListener { rollDice() }
+        outState.putInt("current", dice.currentDiceValue)
+        outState.putInt("current2", dice2.currentDiceValue)
+       outState.putInt("count", dice.rollCount)
+
+
+
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
-        val rollButton: Button = findViewById(R.id.rollDiceButton);
-        rollButton.setOnClickListener { rollDice() }
+        savedInstanceState.getInt("current")
+        savedInstanceState.getInt("current2")
+        savedInstanceState.getInt("count")
     }
 }
