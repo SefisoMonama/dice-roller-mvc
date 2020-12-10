@@ -15,17 +15,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        var currentDiceValue: Int = 0
-        var rollCount: Int = 0
-
-
-        /**
-         * Do a random dice roll and return the result.
-         */
-        fun roll() {
-            currentDiceValue =  (1..numSides).random()
-            rollCount++;
-        }
 
         // Find the Button in the layout
         val rollButton: Button = findViewById(R.id.rollDiceButton)
@@ -33,9 +22,7 @@ class MainActivity : AppCompatActivity() {
 
         // Set a click listener on the button to roll the dice when the user taps the button
         rollButton.setOnClickListener {rollDice()}
-
-
-
+        setViewContents()
 
 
     }
@@ -47,8 +34,7 @@ class MainActivity : AppCompatActivity() {
     private fun rollDice() {
         dice.roll()
         dice2.roll()
-        setViewContents()
-    }
+        }
 
     fun setViewContents(){
 
@@ -126,8 +112,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
-        savedInstanceState.getInt("current")
-        savedInstanceState.getInt("current2")
-        savedInstanceState.getInt("count")
+        dice.currentDiceValue= savedInstanceState.getInt("current")
+        dice2.currentDiceValue= savedInstanceState.getInt("current2")
+        dice.rollCount= savedInstanceState.getInt("count")
     }
 }
