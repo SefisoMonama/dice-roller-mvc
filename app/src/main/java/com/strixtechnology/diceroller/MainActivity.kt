@@ -2,6 +2,7 @@ package com.strixtechnology.diceroller
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
@@ -89,5 +90,20 @@ class MainActivity : AppCompatActivity() {
                 else ->  R.drawable.dice_1
             }
         }
+
+    }
+
+
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        val rollButton: Button = findViewById(R.id.rollDiceButton);
+        rollButton.setOnClickListener { rollDice() }
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        val rollButton: Button = findViewById(R.id.rollDiceButton);
+        rollButton.setOnClickListener { rollDice() }
     }
 }

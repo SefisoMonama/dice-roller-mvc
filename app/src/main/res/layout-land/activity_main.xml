@@ -7,72 +7,6 @@
     android:importantForAccessibility="no"
     tools:context=".MainActivity">
 
-    <ImageView
-        android:id="@+id/diceImage"
-        android:layout_width="100dp"
-        android:layout_height="150dp"
-        android:contentDescription="@string/todo"
-        android:scaleType="centerInside"
-        android:visibility="visible"
-        app:flow_horizontalAlign="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.612"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.45"
-        tools:srcCompat="@drawable/dice_2" />
-
-    <Button
-        android:id="@+id/rollDiceButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:text="@string/roll"
-        app:layout_constraintBottom_toTopOf="@+id/numberAppearanceValue"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.499"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/diceImage" />
-
-    <ImageView
-        android:id="@+id/secondDiceImage"
-        android:layout_width="100dp"
-        android:layout_height="150dp"
-        android:contentDescription="@string/todo"
-        app:flow_horizontalAlign="center"
-        app:layout_constraintBottom_toTopOf="@+id/rollDiceButton"
-        app:layout_constraintEnd_toStartOf="@+id/diceImage"
-        app:layout_constraintHorizontal_bias="0.842"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        tools:srcCompat="@tools:sample/avatars" />
-
-    <TextView
-        android:id="@+id/sumValue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/secondDiceImage"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.499"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:text="TextView2" />
-
-    <TextView
-        android:id="@+id/numberAppearanceValue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rollDiceButton"
-        tools:text="textView3" />
-
     <TextView
         android:id="@+id/sameNumber"
         android:layout_width="wrap_content"
@@ -86,5 +20,71 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
         tools:text="sameNumbers" />
+
+    <TextView
+        android:id="@+id/sumValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/secondDiceImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.499"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="TextView2" />
+
+    <ImageView
+        android:id="@+id/diceImage"
+        android:layout_width="100dp"
+        android:layout_height="150dp"
+        android:contentDescription="@string/todo"
+        android:scaleType="centerInside"
+        android:visibility="visible"
+        android:flow_horizontalAlign="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.612"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.45"
+        tools:srcCompat="@drawable/dice_2" />
+
+    <ImageView
+        android:id="@+id/secondDiceImage"
+        android:layout_width="100dp"
+        android:layout_height="150dp"
+        android:contentDescription="@string/todo"
+        android:flow_horizontalAlign="center"
+        app:layout_constraintBottom_toTopOf="@+id/rollDiceButton"
+        app:layout_constraintEnd_toStartOf="@+id/diceImage"
+        app:layout_constraintHorizontal_bias="0.842"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <Button
+        android:id="@+id/rollDiceButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:text="@string/roll"
+        app:layout_constraintBottom_toTopOf="@+id/numberAppearanceValue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.499"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/diceImage" />
+
+    <TextView
+        android:id="@+id/numberAppearanceValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rollDiceButton"
+        tools:text="textView3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
