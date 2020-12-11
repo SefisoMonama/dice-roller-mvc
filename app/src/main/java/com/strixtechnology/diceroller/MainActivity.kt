@@ -1,12 +1,16 @@
 package com.strixtechnology.diceroller
 
-import androidx.appcompat.app.AppCompatActivity
+
+
 import android.os.Bundle
-import android.os.PersistableBundle
-import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+
+//Declare constant Variables
+const val CURRENT_DICE_VALUE_KEY = "current";
+const val COUNT_VALUE_KEY = "count";
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,25 +27,19 @@ class MainActivity : AppCompatActivity() {
 
         // Set a click listener on the button to roll the dice when the user taps the button
         rollButton.setOnClickListener {rollDice()}
-        Log.e("Rolledbafanas",rollDice().toString())
-
-
-
     }
 
     // Create new Dice object with 6 sides and roll it
     var dice = Dice(6)
     var dice2 = Dice(6)
-
+    //when dice is rolled view will be populated with setViewContent content
     private fun rollDice() {
         dice.roll()
         dice2.roll()
         setViewContents()
-        }
-
+    }
+    // Add contect to View
     fun setViewContents(){
-
-        // Update the screen with the dice roll
         var diceImageView: ImageView = findViewById(R.id.diceImage)
         var secondDiceImageView: ImageView = findViewById(R.id.secondDiceImage)
         var sumValueView: TextView = findViewById(R.id.sumValue);
@@ -61,10 +59,7 @@ class MainActivity : AppCompatActivity() {
         else{
             doubleNumberView.text= " "
         }
-
-
     }
-
     /**
      * Dice with a fixed number of sides.
      */
@@ -72,21 +67,13 @@ class MainActivity : AppCompatActivity() {
         //Declare and Initialize dice variables
         var currentDiceValue: Int = 0
         var rollCount: Int = 0
-
-
         /**
          * Do a random dice roll and return the result.
          */
         fun roll() {
-
             currentDiceValue =  (1..numSides).random()
             rollCount++;
         }
-
-
-
-
-
         //Stores Image Resources
         fun getDiceImageResource(): Int {
             return when (currentDiceValue) {
@@ -99,28 +86,20 @@ class MainActivity : AppCompatActivity() {
                 else ->  R.drawable.dice_1
             }
         }
-
     }
-
-
-
+    //restore any view state that has been frozen or killed
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState.putInt("current", dice.currentDiceValue)
-        outState.putInt("current2", dice2.currentDiceValue)
-       outState.putInt("count", dice.rollCount)
-
-
+        outState.putInt(CURRENT_DICE_VALUE_KEY, dice.currentDiceValue)
+        outState.putInt(CURRENT_DICE_VALUE_KEY, dice2.currentDiceValue)
+        outState.putInt(COUNT_VALUE_KEY, dice.rollCount)
     }
-
+    //state of the data will be restored
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
-        dice.currentDiceValue= savedInstanceState.getInt("current")
-        dice2.currentDiceValue= savedInstanceState.getInt("current2")
-        dice.rollCount= savedInstanceState.getInt("count")
+        dice.currentDiceValue= savedInstanceState.getInt(CURRENT_DICE_VALUE_KEY)
+        dice2.currentDiceValue= savedInstanceState.getInt(CURRENT_DICE_VALUE_KEY)
+        dice.rollCount= savedInstanceState.getInt(COUNT_VALUE_KEY)
         setViewContents()
-
-
-
     }
 }
