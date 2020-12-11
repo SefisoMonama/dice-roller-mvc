@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 const val CURRENT_DICE_VALUE_KEY = "current";
 const val CURRENT_DICE2_VALUE_KEY = "current2";
 const val COUNT_VALUE_KEY = "count";
+const val DICE_SIDE_COUNT = 6;
 
 class MainActivity : AppCompatActivity() {
 
@@ -34,8 +35,8 @@ class MainActivity : AppCompatActivity() {
     /**
      * Create new Dice object with 6 sides and roll it
      */
-    var dice = Dice(6)
-    var dice2 = Dice(6)
+    var dice = Dice(DICE_SIDE_COUNT)
+    var dice2 = Dice(DICE_SIDE_COUNT)
 
     /**
      * when dice is rolled view will be populated with setViewContent content
@@ -60,7 +61,7 @@ class MainActivity : AppCompatActivity() {
         sumValueView.text = "sum of Dices: ${dice.currentDiceValue + dice2.currentDiceValue}"
         rollCountView.text = "You have rolled ${dice.rollCount} time/s"
 
-        //Compare 2 Values on the dices to see if their the same
+        //Compare both dices value to see if they displayed the same values
         if(dice.currentDiceValue==dice2.currentDiceValue) {
             doubleNumberView.text= "Woohoo! you've rolled double numbers"
         }
@@ -68,35 +69,7 @@ class MainActivity : AppCompatActivity() {
             doubleNumberView.text= " "
         }
     }
-    /**
-     * Dice with a fixed number of sides.
-     */
-    class Dice(private val numSides: Int) {
-        //Declare and Initialize dice variables
-        var currentDiceValue: Int = 0
-        var rollCount: Int = 0
-        /**
-         * Do a random dice roll and return the result.
-         */
-        fun roll() {
-            currentDiceValue =  (1..numSides).random()
-            rollCount++;
-        }
-        /**
-         * Store Image Resources
-         */
-        fun getDiceImageResource(): Int {
-            return when (currentDiceValue) {
-                1 -> R.drawable.dice_1
-                2 -> R.drawable.dice_2
-                3 -> R.drawable.dice_3
-                4 -> R.drawable.dice_4
-                5 -> R.drawable.dice_5
-                6 -> R.drawable.dice_6
-                else ->  R.drawable.dice_1
-            }
-        }
-    }
+
     /**
     *Store/Restore values (dices and rollCount) when the app gets onStop() or onDestroy()
     */
@@ -106,7 +79,6 @@ class MainActivity : AppCompatActivity() {
         outState.putInt(CURRENT_DICE2_VALUE_KEY, dice2.currentDiceValue)
         outState.putInt(COUNT_VALUE_KEY, dice.rollCount)
     }
-
     /**
      * Restore dice State(dice values and rollCount) and Updates UI after the screen rotation
      */
