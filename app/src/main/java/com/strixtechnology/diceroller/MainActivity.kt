@@ -3,6 +3,7 @@ package com.strixtechnology.diceroller
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.PersistableBundle
+import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
@@ -22,7 +23,8 @@ class MainActivity : AppCompatActivity() {
 
         // Set a click listener on the button to roll the dice when the user taps the button
         rollButton.setOnClickListener {rollDice()}
-        setViewContents()
+        Log.e("Rolledbafanas",rollDice().toString())
+
 
 
     }
@@ -34,6 +36,7 @@ class MainActivity : AppCompatActivity() {
     private fun rollDice() {
         dice.roll()
         dice2.roll()
+        setViewContents()
         }
 
     fun setViewContents(){
@@ -75,6 +78,7 @@ class MainActivity : AppCompatActivity() {
          * Do a random dice roll and return the result.
          */
         fun roll() {
+
             currentDiceValue =  (1..numSides).random()
             rollCount++;
         }
@@ -107,7 +111,6 @@ class MainActivity : AppCompatActivity() {
        outState.putInt("count", dice.rollCount)
 
 
-
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
@@ -115,5 +118,9 @@ class MainActivity : AppCompatActivity() {
         dice.currentDiceValue= savedInstanceState.getInt("current")
         dice2.currentDiceValue= savedInstanceState.getInt("current2")
         dice.rollCount= savedInstanceState.getInt("count")
+        setViewContents()
+
+
+
     }
 }
