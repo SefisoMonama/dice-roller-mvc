@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 
 //Declare constant Variables
 const val CURRENT_DICE_VALUE_KEY = "current";
+const val CURRENT_DICE2_VALUE_KEY = "current2";
 const val COUNT_VALUE_KEY = "count";
 
 class MainActivity : AppCompatActivity() {
@@ -29,16 +30,24 @@ class MainActivity : AppCompatActivity() {
         rollButton.setOnClickListener {rollDice()}
     }
 
-    // Create new Dice object with 6 sides and roll it
+
+    /**
+     * Create new Dice object with 6 sides and roll it
+     */
     var dice = Dice(6)
     var dice2 = Dice(6)
-    //when dice is rolled view will be populated with setViewContent content
+
+    /**
+     * when dice is rolled view will be populated with setViewContent content
+     */
     private fun rollDice() {
         dice.roll()
         dice2.roll()
         setViewContents()
     }
-    // Add contect to View
+    /**
+     * Add content to your Views
+     */
     fun setViewContents(){
         var diceImageView: ImageView = findViewById(R.id.diceImage)
         var secondDiceImageView: ImageView = findViewById(R.id.secondDiceImage)
@@ -52,8 +61,7 @@ class MainActivity : AppCompatActivity() {
         rollCountView.text = "You have rolled ${dice.rollCount} time/s"
 
         //Compare 2 Values on the dices to see if their the same
-        if(dice.currentDiceValue==dice2.currentDiceValue)
-        {
+        if(dice.currentDiceValue==dice2.currentDiceValue) {
             doubleNumberView.text= "Woohoo! you've rolled double numbers"
         }
         else{
@@ -74,7 +82,9 @@ class MainActivity : AppCompatActivity() {
             currentDiceValue =  (1..numSides).random()
             rollCount++;
         }
-        //Stores Image Resources
+        /**
+         * Store Image Resources
+         */
         fun getDiceImageResource(): Int {
             return when (currentDiceValue) {
                 1 -> R.drawable.dice_1
@@ -87,18 +97,23 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-    //restore any view state that has been frozen or killed
+    /**
+    *Store/Restore values (dices and rollCount) when the app gets onStop() or onDestroy()
+    */
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putInt(CURRENT_DICE_VALUE_KEY, dice.currentDiceValue)
-        outState.putInt(CURRENT_DICE_VALUE_KEY, dice2.currentDiceValue)
+        outState.putInt(CURRENT_DICE2_VALUE_KEY, dice2.currentDiceValue)
         outState.putInt(COUNT_VALUE_KEY, dice.rollCount)
     }
-    //state of the data will be restored
+
+    /**
+     * Restore dice State(dice values and rollCount) and Updates UI after the screen rotation
+     */
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
         dice.currentDiceValue= savedInstanceState.getInt(CURRENT_DICE_VALUE_KEY)
-        dice2.currentDiceValue= savedInstanceState.getInt(CURRENT_DICE_VALUE_KEY)
+        dice2.currentDiceValue= savedInstanceState.getInt(CURRENT_DICE2_VALUE_KEY)
         dice.rollCount= savedInstanceState.getInt(COUNT_VALUE_KEY)
         setViewContents()
     }
