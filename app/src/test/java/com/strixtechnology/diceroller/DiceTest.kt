@@ -11,7 +11,7 @@ class DiceTest : TestCase() {
      * functions as you expect it to.
      */
     var dice = Dice(DICE_SIDE_COUNT)
-    var rolls = Dice(NUM_DICE_ROLL)
+    val NUM_DICE_ROLL = 10;
 
     @Test
     fun testDiceCounterIncrementing() {
