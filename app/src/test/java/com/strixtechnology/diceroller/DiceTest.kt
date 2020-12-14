@@ -15,11 +15,10 @@ class DiceTest : TestCase() {
     @Test
     fun testDiceCounterIncrementing() {
         /**
-         * Write code here to which rolls the dice a number of times
+         * Write code here which rolls the dice a number of times
          * and then confirm that the value for dice.rollCount is correct
          *
-         * Tip: Use assertEquals(expectedValue, actualValue) - Read up
-         * on Kotlin Unit testing if needed
+         * AssertEquals compares two values to see if they are the same
          */
         val excpectedValue = 10
 
@@ -34,12 +33,11 @@ class DiceTest : TestCase() {
     @Test
     fun testCorrectDrawableLoadsIfDiceRollsSix() {
         /**
-         * Write code here to which sets the dice value to known values
+         * Write code here which sets the dice to a known value
          * and then confirm that correct Image Resource is returned
          * by the function getDiceImageResource()
          *
-         * Tip: Use assertEquals(expectedValue, actualValue) - Read up
-         * on Kotlin Unit testing if needed
+         * AssertEquals compares two values to see if they are the same
          */
 
         val excpectedValue = R.drawable.dice_6
