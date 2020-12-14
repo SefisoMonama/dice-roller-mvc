@@ -13,6 +13,7 @@ const val CURRENT_DICE_VALUE_KEY = "current";
 const val CURRENT_DICE2_VALUE_KEY = "current2";
 const val COUNT_VALUE_KEY = "count";
 const val DICE_SIDE_COUNT = 6;
+const val NUM_DICE_ROLL = 10;
 
 class MainActivity : AppCompatActivity() {
 

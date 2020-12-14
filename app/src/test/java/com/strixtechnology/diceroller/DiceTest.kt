@@ -11,6 +11,7 @@ class DiceTest : TestCase() {
      * functions as you expect it to.
      */
     var dice = Dice(DICE_SIDE_COUNT)
+    var rolls = Dice(NUM_DICE_ROLL)
 
     @Test
     fun testDiceCounterIncrementing() {
@@ -23,10 +24,10 @@ class DiceTest : TestCase() {
         val excpectedValue = 10
 
         //TODO: write code here which rolls the dice 10 times
-        dice.currentDiceValue =  (1..excpectedValue).random()
+        dice.roll() =  (1..NUM_DICE_ROLL).random()
 
 
-        val actualValue = dice.currentDiceValue
+        val actualValue = dice.rollCount
 
         Assert.assertEquals(excpectedValue, actualValue)
     }
