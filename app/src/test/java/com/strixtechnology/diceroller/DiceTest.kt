@@ -23,6 +23,7 @@ class DiceTest : TestCase() {
         val excpectedValue = 10
 
         //TODO: write code here which rolls the dice 10 times
+        dice.currentDiceValue =  (1..excpectedValue).random()
 
 
         val actualValue = dice.currentDiceValue
@@ -43,6 +44,7 @@ class DiceTest : TestCase() {
         val excpectedValue = R.drawable.dice_6
 
         //TODO: write code here which sets the dice value to 6
+        dice.currentDiceValue =  DICE_SIDE_COUNT
 
         val actualValue = dice.getDiceImageResource()
 
