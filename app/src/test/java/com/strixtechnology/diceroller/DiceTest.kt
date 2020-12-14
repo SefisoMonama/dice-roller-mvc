@@ -21,10 +21,17 @@ class DiceTest : TestCase() {
          * Tip: Use assertEquals(expectedValue, actualValue) - Read up
          * on Kotlin Unit testing if needed
          */
+        val excpectedValue = 10
+
+        //TODO: write code here which rolls the dice 10 times
+
+        val actualValue = dice.currentDiceValue
+
+        Assert.assertEquals(excpectedValue, actualValue)
     }
 
     @Test
-    fun testImageResourceLoading() {
+    fun testCorrectDrawableLoadsIfDiceRollsSix() {
         /**
          * Write code here to which sets the dice value to known values
          * and then confirm that correct Image Resource is returned
@@ -33,5 +40,13 @@ class DiceTest : TestCase() {
          * Tip: Use assertEquals(expectedValue, actualValue) - Read up
          * on Kotlin Unit testing if needed
          */
+
+        val excpectedValue = R.drawable.dice_6
+
+        //TODO: write code here which sets the dice value to 6
+
+        val actualValue = dice.getDiceImageResource()
+
+        Assert.assertEquals(excpectedValue, actualValue)
     }
 }
