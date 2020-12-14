@@ -3,13 +3,13 @@ package com.strixtechnology.diceroller
  * Dice with a fixed number of sides.
  */
 
-class Dice(private val numSides: Int) {
+class Dice(val numSides: Int) {
     //Declare and Initialize dice variables
     var currentDiceValue: Int = 0
-    private set
+
 
     var rollCount: Int = 0
-    private set
+
     
     /**
      * Do a random dice roll and return the result.

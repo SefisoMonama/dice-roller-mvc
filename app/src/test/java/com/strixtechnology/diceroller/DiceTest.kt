@@ -24,8 +24,9 @@ class DiceTest : TestCase() {
         val excpectedValue = 10
 
         //TODO: write code here which rolls the dice 10 times
-        dice.roll() =  (1..NUM_DICE_ROLL).random()
-
+        for (i in 1..NUM_DICE_ROLL) {
+            dice.roll();
+        }
 
         val actualValue = dice.rollCount
 
