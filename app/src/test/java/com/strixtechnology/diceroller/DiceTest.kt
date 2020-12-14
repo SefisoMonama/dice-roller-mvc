@@ -27,9 +27,7 @@ class DiceTest : TestCase() {
         for (i in 1..NUM_DICE_ROLL) {
             dice.roll();
         }
-
         val actualValue = dice.rollCount
-
         Assert.assertEquals(excpectedValue, actualValue)
     }
 
@@ -43,13 +41,11 @@ class DiceTest : TestCase() {
          * AssertEquals compares two values to see if they are the same
          */
 
-        val excpectedValue = R.drawable.dice_6
+        val expectedValue = R.drawable.dice_6
 
         //TODO: write code here which sets the dice value to 6
         dice.currentDiceValue =  DICE_SIDE_COUNT
-
         val actualValue = dice.getDiceImageResource()
-
-        Assert.assertEquals(excpectedValue, actualValue)
+        Assert.assertEquals(expectedValue, actualValue)
     }
 }
