@@ -23,27 +23,47 @@ class DiceTest : TestCase() {
 
     @Test
     fun testCorrectDrawableLoadsIfDiceRollsSix() {
-        /**
-         * Write code here which sets the dice to a known value
-         * and then confirm that correct Image Resource is returned
-         * by the function getDiceImageResource()
-         *
-         * AssertEquals compares two values to see if they are the same
-         */
-
         val expectedValue = R.drawable.dice_6
-        /**
-         * Write code here which sets the dice to a known value
-         * and then confirm that correct Image Resource is returned
-         * by the function getDiceImageResource()
-         *
-         * AssertEquals compares two values to see if they are the same
-         */
-
-
-        val excpectedValue = R.drawable.dice_6
-
-
+        //TODO: write code here which sets the dice value to 6
+        dice.currentDiceValue =  DICE_SIDE_COUNT
+        val actualValue = dice.getDiceImageResource()
+        Assert.assertEquals(expectedValue, actualValue)
+    }
+    @Test
+    fun testCorrectDrawableLoadsIfDiceRollsFive() {
+        val expectedValue = R.drawable.dice_6
+        //TODO: write code here which sets the dice value to 6
+        dice.currentDiceValue =  DICE_SIDE_COUNT
+        val actualValue = dice.getDiceImageResource()
+        Assert.assertEquals(expectedValue, actualValue)
+    }
+    @Test
+    fun testCorrectDrawableLoadsIfDiceRollsFour() {
+        val expectedValue = R.drawable.dice_6
+        //TODO: write code here which sets the dice value to 6
+        dice.currentDiceValue =  DICE_SIDE_COUNT
+        val actualValue = dice.getDiceImageResource()
+        Assert.assertEquals(expectedValue, actualValue)
+    }
+    @Test
+    fun testCorrectDrawableLoadsIfDiceRollsThree() {
+        val expectedValue = R.drawable.dice_6
+        //TODO: write code here which sets the dice value to 6
+        dice.currentDiceValue =  DICE_SIDE_COUNT
+        val actualValue = dice.getDiceImageResource()
+        Assert.assertEquals(expectedValue, actualValue)
+    }
+    @Test
+    fun testCorrectDrawableLoadsIfDiceRollsTwo() {
+        val expectedValue = R.drawable.dice_6
+        //TODO: write code here which sets the dice value to 6
+        dice.currentDiceValue =  DICE_SIDE_COUNT
+        val actualValue = dice.getDiceImageResource()
+        Assert.assertEquals(expectedValue, actualValue)
+    }
+    @Test
+    fun testCorrectDrawableLoadsIfDiceRollsOne() {
+        val expectedValue = R.drawable.dice_6
         //TODO: write code here which sets the dice value to 6
         dice.currentDiceValue =  DICE_SIDE_COUNT
         val actualValue = dice.getDiceImageResource()
