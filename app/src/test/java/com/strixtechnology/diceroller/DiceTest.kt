@@ -25,6 +25,7 @@ class DiceTest : TestCase() {
 
         //TODO: write code here which rolls the dice 10 times
 
+
         val actualValue = dice.currentDiceValue
 
         Assert.assertEquals(excpectedValue, actualValue)
