@@ -17,6 +17,12 @@ const val DICE_SIDE_COUNT = 6;
 class MainActivity : AppCompatActivity() {
 
     /**
+     * Create new Dice object with 6 sides and roll it
+     */
+    var dice = Dice(DICE_SIDE_COUNT)
+    var dice2 = Dice(DICE_SIDE_COUNT)
+
+    /**
      * This method is called when the Activity is created.
      */
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,11 +38,6 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    /**
-     * Create new Dice object with 6 sides and roll it
-     */
-    var dice = Dice(DICE_SIDE_COUNT)
-    var dice2 = Dice(DICE_SIDE_COUNT)
 
     /**
      * when dice is rolled view will be populated with setViewContent content
