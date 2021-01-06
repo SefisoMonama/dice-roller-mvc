@@ -3,16 +3,21 @@ package com.strixtechnology.diceroller
 
 
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import org.w3c.dom.Text
 
 //Declare constant Variables
-const val CURRENT_DICE_VALUE_KEY = "current";
-const val CURRENT_DICE2_VALUE_KEY = "current2";
-const val COUNT_VALUE_KEY = "count";
-const val DICE_SIDE_COUNT = 6;
+const val CURRENT_DICE_VALUE_KEY = "current"
+const val CURRENT_DICE2_VALUE_KEY = "current2"
+const val COUNT_VALUE_KEY = "count"
+const val DICE_SIDE_COUNT = 6
+const val DOUBLE_DICES = 2
+const val SINGLE_DICE =1
 
 
 class MainActivity : AppCompatActivity() {
@@ -32,22 +37,41 @@ class MainActivity : AppCompatActivity() {
 
         // Find the Button in the layout
         val rollButton: Button = findViewById(R.id.rollDiceButton)
+        var rollDoubleDiceButton: Button = findViewById(R.id.roll2Dices)
+        var rollSingleDiceButton: Button = findViewById(R.id.roll1Dice)
 
+        //assign value to button according to their description
+       // rollDoubleDiceButton = DOUBLE_DICES
+        //find View in the layout
+        var numberOfDiceToRollView: TextView=findViewById(R.id.numberOfDiceToRoll)
+
+        //Prompt the user to choose number of dice/s to roll
+        numberOfDiceToRollView.text = "Enter number of Dice you want to roll below only 1 OR 2"
+
+        val numberToRollEditText: EditText = findViewById(R.id.enterNumber)
 
         // Set a click listener on the button to roll the dice when the user taps the button
-        rollButton.setOnClickListener {rollDice()}
-    }
 
+        //rollButton.setOnClickListener {rollDice()}
+        rollSingleDiceButton.setOnClickListener{rollSingleDices()}
+        rollDoubleDiceButton.setOnClickListener{rollDoubleDices()}
+
+    }
 
 
     /**
      * when dice is rolled view will be populated with setViewContent content
      */
-    private fun rollDice() {
-
+    private fun rollDoubleDices() {
         dice.roll()
         dice2.roll()
         setViewContentsFor2Dices()
+    }
+    private fun rollSingleDices() {
+
+        dice.roll()
+        dice2.roll()
+        setViewContentsFor1Dice()
     }
     /**
      * Add content to your Views
@@ -60,13 +84,13 @@ class MainActivity : AppCompatActivity() {
         var sumValueView: TextView = findViewById(R.id.sumValue);
         var rollCountView: TextView = findViewById(R.id.numberAppearanceValue);
         var doubleNumberView: TextView=findViewById(R.id.sameNumber)
-        var numberOfDiceToRollView: TextView=findViewById(R.id.numberOfDiceToRoll)
+
 
         diceImageView.setImageResource(dice.getDiceImageResource())
         secondDiceImageView.setImageResource(dice2.getDiceImageResource())
         sumValueView.text = "sum of Dices: ${dice.currentDiceValue + dice2.currentDiceValue}"
         rollCountView.text = "You have rolled ${dice.rollCount} time/s"
-        numberOfDiceToRollView.text = "Choose Number of Dice you want to roll from the buttons below"
+
 
         //Compare both dices value to see if they displayed the same values
         if(dice.currentDiceValue==dice2.currentDiceValue) {
@@ -75,6 +99,21 @@ class MainActivity : AppCompatActivity() {
         else{
             doubleNumberView.text= " "
         }
+    }
+
+    fun setViewContentsFor1Dice() {
+        var diceImageView: ImageView = findViewById(R.id.diceImage)
+        var secondDiceImageView: ImageView = findViewById(R.id.secondDiceImage)
+        // var sumValueView: TextView = findViewById(R.id.sumValue);
+        var rollCountView: TextView = findViewById(R.id.numberAppearanceValue);
+        //var doubleNumberView: TextView=findViewById(R.id.sameNumber)
+
+
+        //diceImageView.setImageResource(dice.getDiceImageResource())
+        secondDiceImageView.setImageResource(dice2.getDiceImageResource())
+        //sumValueView.text = "sum of Dices: ${dice.currentDiceValue + dice2.currentDiceValue}"
+        rollCountView.text = "You have rolled ${dice.rollCount} time/s"
+
     }
 
     /**

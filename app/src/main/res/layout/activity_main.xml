@@ -16,20 +16,21 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/sumValue"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintHorizontal_bias="0.437"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.158"
         tools:text="sameNumbers" />
 
     <TextView
         android:id="@+id/sumValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="56dp"
+        android:layout_marginBottom="20dp"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/secondDiceImage"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.467"
+        app:layout_constraintHorizontal_bias="0.461"
         app:layout_constraintStart_toStartOf="parent"
         tools:text="TextView2" />
 
@@ -45,7 +46,7 @@
         app:layout_constraintHorizontal_bias="0.76"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.498"
+        app:layout_constraintVertical_bias="0.659"
         tools:srcCompat="@drawable/dice_2" />
 
     <ImageView
@@ -63,12 +64,14 @@
 
     <Button
         android:id="@+id/rollDiceButton"
+        android:onClick="getSet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
         android:text="@string/roll"
         app:layout_constraintBottom_toTopOf="@+id/numberAppearanceValue"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/diceImage" />
 
@@ -76,9 +79,10 @@
         android:id="@+id/numberAppearanceValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="36dp"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rollDiceButton"
         tools:text="textView3" />
@@ -87,9 +91,61 @@
         android:id="@+id/numberOfDiceToRoll"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/sumValue"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.432"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sameNumber" />
+        app:layout_constraintTop_toBottomOf="@+id/sameNumber"
+        app:layout_constraintVertical_bias="0.151"
+        tools:text="Choose Number of Dice to roll" />
+
+    <Button
+        android:id="@+id/roll1Dice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="72dp"
+        android:text="@string/_1_dice"
+        app:layout_constraintBottom_toTopOf="@+id/sumValue"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/numberOfDiceToRoll"
+        app:layout_constraintVertical_bias="0.87" />
+
+    <Button
+        android:id="@+id/roll2Dices"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="72dp"
+        android:text="@string/_2_dices"
+        app:layout_constraintBottom_toTopOf="@+id/sumValue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.719"
+        app:layout_constraintStart_toEndOf="@+id/roll1Dice"
+        app:layout_constraintTop_toBottomOf="@+id/numberOfDiceToRoll"
+        app:layout_constraintVertical_bias="0.883" />
+
+    <EditText
+        android:id="@+id/enterNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/roll1Dice"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/numberOfDiceToRoll"
+        app:layout_constraintVertical_bias="0.187" />
+
+    <TextView
+        android:id="@+id/numberEntered"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/roll2Dices"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/enterNumber" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
