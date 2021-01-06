@@ -83,4 +83,13 @@
         app:layout_constraintTop_toBottomOf="@+id/rollDiceButton"
         tools:text="textView3" />
 
+    <TextView
+        android:id="@+id/numberOfDiceToRoll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/sumValue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sameNumber" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

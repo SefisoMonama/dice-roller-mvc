@@ -44,24 +44,29 @@ class MainActivity : AppCompatActivity() {
      * when dice is rolled view will be populated with setViewContent content
      */
     private fun rollDice() {
+
         dice.roll()
         dice2.roll()
-        setViewContents()
+        setViewContentsFor2Dices()
     }
     /**
      * Add content to your Views
+     *
+     *
      */
-    fun setViewContents(){
+    fun setViewContentsFor2Dices(){
         var diceImageView: ImageView = findViewById(R.id.diceImage)
         var secondDiceImageView: ImageView = findViewById(R.id.secondDiceImage)
         var sumValueView: TextView = findViewById(R.id.sumValue);
         var rollCountView: TextView = findViewById(R.id.numberAppearanceValue);
         var doubleNumberView: TextView=findViewById(R.id.sameNumber)
+        var numberOfDiceToRollView: TextView=findViewById(R.id.numberOfDiceToRoll)
 
         diceImageView.setImageResource(dice.getDiceImageResource())
         secondDiceImageView.setImageResource(dice2.getDiceImageResource())
         sumValueView.text = "sum of Dices: ${dice.currentDiceValue + dice2.currentDiceValue}"
         rollCountView.text = "You have rolled ${dice.rollCount} time/s"
+        numberOfDiceToRollView.text = "Choose Number of Dice you want to roll from the buttons below"
 
         //Compare both dices value to see if they displayed the same values
         if(dice.currentDiceValue==dice2.currentDiceValue) {
@@ -89,6 +94,6 @@ class MainActivity : AppCompatActivity() {
         dice.currentDiceValue= savedInstanceState.getInt(CURRENT_DICE_VALUE_KEY)
         dice2.currentDiceValue= savedInstanceState.getInt(CURRENT_DICE2_VALUE_KEY)
         dice.rollCount= savedInstanceState.getInt(COUNT_VALUE_KEY)
-        setViewContents()
+        setViewContentsFor2Dices()
     }
 }
