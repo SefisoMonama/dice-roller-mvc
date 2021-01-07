@@ -36,29 +36,20 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         // Find the Button in the layout
-        val rollButton: Button = findViewById(R.id.rollDiceButton)
         var rollDoubleDiceButton: Button = findViewById(R.id.roll2Dices)
         var rollSingleDiceButton: Button = findViewById(R.id.roll1Dice)
 
-        //assign value to button according to their description
-       // rollDoubleDiceButton = DOUBLE_DICES
         //find View in the layout
         var numberOfDiceToRollView: TextView=findViewById(R.id.numberOfDiceToRoll)
 
         //Prompt the user to choose number of dice/s to roll
-        numberOfDiceToRollView.text = "Enter number of Dice you want to roll below only 1 OR 2"
+        numberOfDiceToRollView.text = "Select the Number of dice/s to roll below"
 
-        val numberToRollEditText: EditText = findViewById(R.id.enterNumber)
-
-        // Set a click listener on the button to roll the dice when the user taps the button
-
-        //rollButton.setOnClickListener {rollDice()}
+        // Set a click listener on the button to roll the dice when the user taps the butto
         rollSingleDiceButton.setOnClickListener{rollSingleDices()}
         rollDoubleDiceButton.setOnClickListener{rollDoubleDices()}
 
     }
-
-
     /**
      * when dice is rolled view will be populated with setViewContent content
      */
@@ -68,7 +59,6 @@ class MainActivity : AppCompatActivity() {
         setViewContentsFor2Dices()
     }
     private fun rollSingleDices() {
-
         dice.roll()
         dice2.roll()
         setViewContentsFor1Dice()
@@ -104,14 +94,14 @@ class MainActivity : AppCompatActivity() {
     fun setViewContentsFor1Dice() {
         var diceImageView: ImageView = findViewById(R.id.diceImage)
         var secondDiceImageView: ImageView = findViewById(R.id.secondDiceImage)
-        // var sumValueView: TextView = findViewById(R.id.sumValue);
+        var numRolledView: TextView = findViewById(R.id.sumValue);
         var rollCountView: TextView = findViewById(R.id.numberAppearanceValue);
         //var doubleNumberView: TextView=findViewById(R.id.sameNumber)
 
 
         //diceImageView.setImageResource(dice.getDiceImageResource())
         secondDiceImageView.setImageResource(dice2.getDiceImageResource())
-        //sumValueView.text = "sum of Dices: ${dice.currentDiceValue + dice2.currentDiceValue}"
+        numRolledView.text = "You have rolled: ${dice2.currentDiceValue}"
         rollCountView.text = "You have rolled ${dice.rollCount} time/s"
 
     }
