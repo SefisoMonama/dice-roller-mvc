@@ -15,7 +15,7 @@ import org.w3c.dom.Text
 const val CURRENT_DICE_VALUE_KEY = "current"
 const val CURRENT_DICE2_VALUE_KEY = "current2"
 const val COUNT_VALUE_KEY = "count"
-const val DICE_SIDE_COUNT = 6
+const val DICE_SIDE_COUNT = 8
 const val DOUBLE_DICES = 2
 const val SINGLE_DICE =1
 
@@ -38,17 +38,17 @@ class MainActivity : AppCompatActivity() {
         // Find the Button in the layout
         var rollDoubleDiceButton: Button = findViewById(R.id.roll2Dices)
         var rollSingleDiceButton: Button = findViewById(R.id.roll1Dice)
-
+        var sixSidesButton: Button = findViewById(R.id.sixSides)
+        var eightSidesButton: Button = findViewById(R.id.eightSides)
         //find View in the layout
         var numberOfDiceToRollView: TextView=findViewById(R.id.numberOfDiceToRoll)
 
         //Prompt the user to choose number of dice/s to roll
-        numberOfDiceToRollView.text = "Select the Number of dice/s to roll below"
+        numberOfDiceToRollView.text = "Select the Number of dice/s to roll"
 
-        // Set a click listener on the button to roll the dice when the user taps the butto
+        // Set a click listener on the button to roll the dice when the user taps the button
         rollSingleDiceButton.setOnClickListener{rollSingleDices()}
         rollDoubleDiceButton.setOnClickListener{rollDoubleDices()}
-
     }
     /**
      * when dice is rolled view will be populated with setViewContent content

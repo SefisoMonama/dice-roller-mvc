@@ -87,7 +87,13 @@ class DiceTest : TestCase() {
     fun testForRoll1Dice(){
         val oneDice: Int = 1
         val expectedValue:Int = oneDice
-        val actualValue = R.id.roll1Dice
+        val actualValue: Int = R.id.roll1Dice
         Assert.assertEquals(expectedValue, actualValue)
+    }
+    @Test
+    fun testFor8sidedDice(){
+        val sides: Int= 8
+        val expectedValue:Int = sides
+
     }
 }

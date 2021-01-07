@@ -27,6 +27,8 @@ class Dice(private val numSides: Int) {
             4 -> R.drawable.dice_4
             5 -> R.drawable.dice_5
             6 -> R.drawable.dice_6
+            7 -> R.drawable.dice_7
+            8 -> R.drawable.dice_8
             else ->  R.drawable.dice_1
         }
     }
