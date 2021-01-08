@@ -4,18 +4,17 @@ package com.strixtechnology.diceroller
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.chip.Chip
 import org.w3c.dom.Text
 
 //Declare constant Variables
 const val CURRENT_DICE_VALUE_KEY = "current"
 const val CURRENT_DICE2_VALUE_KEY = "current2"
 const val COUNT_VALUE_KEY = "count"
-const val DICE_SIDE_COUNT = 8
+const val DICE_SIDE_COUNT_6 = 6
+const val DICE_SIDE_COUNT_8 = 8
 const val DOUBLE_DICES = 2
 const val SINGLE_DICE =1
 
@@ -25,8 +24,10 @@ class MainActivity : AppCompatActivity() {
     /**
      * Create new Dice object with 6 sides and roll it
      */
-    var dice = Dice(DICE_SIDE_COUNT)
-    var dice2 = Dice(DICE_SIDE_COUNT)
+    var dice = Dice(DICE_SIDE_COUNT_6)
+    var dice2 = Dice(DICE_SIDE_COUNT_6)
+    var dice3 = Dice(DICE_SIDE_COUNT_8)
+    var dice4 = Dice(DICE_SIDE_COUNT_8)
 
     /**
      * This method is called when the Activity is created.
@@ -35,11 +36,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Find the Button in the layout
-        var rollDoubleDiceButton: Button = findViewById(R.id.roll2Dices)
-        var rollSingleDiceButton: Button = findViewById(R.id.roll1Dice)
-        var sixSidesButton: Button = findViewById(R.id.sixSides)
-        var eightSidesButton: Button = findViewById(R.id.eightSides)
         //find View in the layout
         var numberOfDiceToRollView: TextView=findViewById(R.id.numberOfDiceToRoll)
 
@@ -47,8 +43,13 @@ class MainActivity : AppCompatActivity() {
         numberOfDiceToRollView.text = "Select the Number of dice/s to roll"
 
         // Set a click listener on the button to roll the dice when the user taps the button
-        rollSingleDiceButton.setOnClickListener{rollSingleDices()}
-        rollDoubleDiceButton.setOnClickListener{rollDoubleDices()}
+        //Find chip in the layout
+        var sixSidesChip: Chip = findViewById(R.id.sixSides)
+        var eightSidesChip: Chip = findViewById(R.id.eightSides)
+        var roll1DiceChip: Chip = findViewById(R.id.roll1Dice)
+        var roll2DiceChip: Chip = findViewById(R.id.roll2Dices)
+
+        sixSidesChip.isChecked
     }
     /**
      * when dice is rolled view will be populated with setViewContent content

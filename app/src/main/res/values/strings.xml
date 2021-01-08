@@ -1,9 +1,12 @@
 <resources>
     <string name="app_name">Dice Roller</string>
-    <string name="roll">Roll</string>
     <string name="todo">TODO</string>
     <string name="todo2">TODO2</string>
     <string name="TextView">TextView</string>
-    <string name="_2_dices">2 Dices</string>
     <string name="_1_dice">1 Dice</string>
+    <string name="how_many_sides_should_your_dice_have">How many sides should your dice have</string>
+    <string name="_8">8</string>
+    <string name="_6">6</string>
+    <string name="_2_dices">2 Dices</string>
+    <string name="roll">Roll</string>
 </resources>

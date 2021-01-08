@@ -23,14 +23,53 @@
         tools:text="sameNumbers" />
 
     <TextView
+        android:id="@+id/chooseNumberOfSides"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/how_many_sides_should_your_dice_have"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/numberOfDiceToRoll"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sameNumber"
+        app:layout_constraintVertical_bias="0.251" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chooseDiceSides"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chooseNumberOfSides"
+        app:singleSelection="true">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/sixSides"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/_6"
+            android:textSize="48sp" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/eightSides"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/_8" />
+    </com.google.android.material.chip.ChipGroup>
+
+    <TextView
         android:id="@+id/sumValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="56dp"
+        android:layout_marginBottom="8dp"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/secondDiceImage"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.465"
+        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
         tools:text="TextView2" />
 
@@ -46,14 +85,14 @@
         app:layout_constraintHorizontal_bias="0.82"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.745"
+        app:layout_constraintVertical_bias="0.685"
         tools:srcCompat="@drawable/dice_2" />
 
     <ImageView
         android:id="@+id/secondDiceImage"
         android:layout_width="160dp"
         android:layout_height="200dp"
-        android:layout_marginTop="396dp"
+        android:layout_marginTop="348dp"
         android:contentDescription="@string/todo"
         app:layout_constraintEnd_toStartOf="@+id/diceImage"
         app:layout_constraintHorizontal_bias="1.0"
@@ -82,65 +121,46 @@
         android:textSize="22sp"
         app:layout_constraintBottom_toTopOf="@+id/sumValue"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.393"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sameNumber"
-        app:layout_constraintVertical_bias="0.652"
+        app:layout_constraintVertical_bias="0.506"
         tools:text="Choose Number of Dice to roll" />
 
-    <Button
-        android:id="@+id/roll1Dice"
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chipGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="96dp"
-        android:text="@string/_1_dice"
-        app:layout_constraintBottom_toTopOf="@+id/sumValue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/numberOfDiceToRoll"
-        app:layout_constraintVertical_bias="0.0" />
+        app:singleSelection="true">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/roll1Dice"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/_1_dice" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/roll2Dices"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/_2_dices" />
+    </com.google.android.material.chip.ChipGroup>
 
     <Button
-        android:id="@+id/roll2Dices"
+        android:id="@+id/rollDice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="72dp"
-        android:text="@string/_2_dices"
+        android:layout_marginBottom="8dp"
+        android:text="@string/roll"
         app:layout_constraintBottom_toTopOf="@+id/sumValue"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.538"
-        app:layout_constraintStart_toEndOf="@+id/roll1Dice"
-        app:layout_constraintTop_toBottomOf="@+id/numberOfDiceToRoll"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/chooseNumberOfSides"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="How many sides should your dice have"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/numberOfDiceToRoll"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sameNumber"
-        app:layout_constraintVertical_bias="0.365" />
-
-    <Button
-        android:id="@+id/sixSides"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="104dp"
-        android:text="6"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/chooseNumberOfSides" />
-
-    <Button
-        android:id="@+id/eightSides"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="104dp"
-        android:text="8"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/chooseNumberOfSides" />
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
