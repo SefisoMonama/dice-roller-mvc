@@ -27,27 +27,11 @@ class DiceTest : TestCase() {
      * Test if image dice_1..8 will be displayed if current Value is 1..6
      */
     @Test
-    fun textCorrectDrawableLoadsIfDiceRollsEight(){
-        val expectedValue = R.drawable.dice_8
-        val side8: Int = 8
-        dice.currentDiceValue = side8
-        val actualValue = dice.getDiceImageResource()
-        Assert.assertEquals(expectedValue, actualValue)
-    }
-    @Test
-    fun textCorrectDrawableLoadsIfDiceRollsSeven(){
-        val expectedValue = R.drawable.dice_7
-        val side7: Int = 7
-        dice.currentDiceValue = side7
-        val actualValue = dice.getDiceImageResource()
-        Assert.assertEquals(expectedValue, actualValue)
-    }
-    @Test
     fun testCorrectDrawableLoadsIfDiceRollsSix() {
         val expectedValue = R.drawable.dice_6
         val side6: Int=6
         dice.currentDiceValue = side6
-        val actualValue = dice.getDiceImageResource()
+        val actualValue = dice.getDiceImageResourceFor6Sides()
         Assert.assertEquals(expectedValue, actualValue)
     }
     @Test
@@ -55,7 +39,7 @@ class DiceTest : TestCase() {
         val expectedValue = R.drawable.dice_5
         val side5: Int=5
         dice.currentDiceValue = side5
-        val actualValue = dice.getDiceImageResource()
+        val actualValue = dice.getDiceImageResourceFor6Sides()
         Assert.assertEquals(expectedValue, actualValue)
     }
     @Test
@@ -63,7 +47,7 @@ class DiceTest : TestCase() {
         val expectedValue = R.drawable.dice_4
         val side4: Int=4
         dice.currentDiceValue =  side4
-        val actualValue = dice.getDiceImageResource()
+        val actualValue = dice.getDiceImageResourceFor6Sides()
         Assert.assertEquals(expectedValue, actualValue)
     }
     @Test
@@ -71,7 +55,7 @@ class DiceTest : TestCase() {
         val expectedValue = R.drawable.dice_3
         val side3: Int=3
         dice.currentDiceValue =  side3
-        val actualValue = dice.getDiceImageResource()
+        val actualValue = dice.getDiceImageResourceFor6Sides()
         Assert.assertEquals(expectedValue, actualValue)
     }
     @Test
@@ -79,7 +63,7 @@ class DiceTest : TestCase() {
         val expectedValue = R.drawable.dice_2
         val side2: Int=2
         dice.currentDiceValue =  side2
-        val actualValue = dice.getDiceImageResource()
+        val actualValue = dice.getDiceImageResourceFor6Sides()
         Assert.assertEquals(expectedValue, actualValue)
     }
     @Test
@@ -87,7 +71,7 @@ class DiceTest : TestCase() {
         val expectedValue = R.drawable.dice_1
         val side1: Int=1
         dice.currentDiceValue =  side1
-        val actualValue = dice.getDiceImageResource()
+        val actualValue = dice.getDiceImageResourceFor6Sides()
         Assert.assertEquals(expectedValue, actualValue)
     }
     @Test

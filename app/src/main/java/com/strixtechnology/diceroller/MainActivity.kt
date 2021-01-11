@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.chip.Chip
+import com.google.android.material.chip.ChipDrawable
+import com.google.android.material.chip.ChipGroup
 
 //Declare constant Variables
 const val CURRENT_DICE_VALUE_KEY = "current"
@@ -45,6 +47,9 @@ class MainActivity : AppCompatActivity() {
         var eightSidesChip: Chip = findViewById(R.id.eightSides)
         var roll1DiceChip: Chip = findViewById(R.id.roll1Dice)
         var roll2DiceChip: Chip = findViewById(R.id.roll2Dices)
+        var chooseDiceSidesChip: ChipGroup  =findViewById(R.id.chooseDiceSides)
+        var numberOfDiceToRollChip: ChipGroup = findViewById(R.id.numberOfDice)
+
 
         if(sixSidesChip.isChecked()){
             if(roll1DiceChip.isChecked()){
@@ -52,14 +57,15 @@ class MainActivity : AppCompatActivity() {
             }else if(roll2DiceChip.isChecked()){
                 rollDiceButton.setOnClickListener{rollDoubleDicesWith6Sides()}
             }
-        }else if(eightSidesChip.isChecked()){
+        }
+
+        if(eightSidesChip.isChecked()){
             if(roll1DiceChip.isChecked()){
                 rollDiceButton.setOnClickListener{rollSingleDicesWith8Sides()}
             }else if(roll2DiceChip.isChecked()){
                 rollDiceButton.setOnClickListener{rollDoubleDicesWith8Sides()}
             }
         }
-
     }
     /**
      * when dice is rolled view will be populated with setViewContent content
@@ -94,8 +100,8 @@ class MainActivity : AppCompatActivity() {
         var doubleNumberView: TextView=findViewById(R.id.sameNumber)
 
 
-        diceImageView.setImageResource(dice3.getDiceImageResource())
-        secondDiceImageView.setImageResource(dice4.getDiceImageResource())
+        diceImageView.setImageResource(dice3.getDiceImageResourceFor8Sides())
+        secondDiceImageView.setImageResource(dice4.getDiceImageResourceFor8Sides())
         sumValueView.text = "sum of Dices: ${dice3.currentDiceValue + dice4.currentDiceValue}"
         rollCountView.text = "You have rolled ${dice3.rollCount} time/s"
 
@@ -117,7 +123,7 @@ class MainActivity : AppCompatActivity() {
         var numRolledView: TextView = findViewById(R.id.sumValue);
         var rollCountView: TextView = findViewById(R.id.timesYouRolled);
 
-        secondDiceImageView.setImageResource(dice4.getDiceImageResource())
+        secondDiceImageView.setImageResource(dice4.getDiceImageResourceFor8Sides())
         numRolledView.text = "You have rolled: ${dice4.currentDiceValue}"
         rollCountView.text = "You have rolled ${dice3.rollCount} time/s"
 
@@ -132,8 +138,8 @@ class MainActivity : AppCompatActivity() {
         var rollCountView: TextView = findViewById(R.id.timesYouRolled);
         var doubleNumberView: TextView=findViewById(R.id.sameNumber)
 
-        diceImageView.setImageResource(dice.getDiceImageResource())
-        secondDiceImageView.setImageResource(dice2.getDiceImageResource())
+        diceImageView.setImageResource(dice.getDiceImageResourceFor6Sides())
+        secondDiceImageView.setImageResource(dice2.getDiceImageResourceFor6Sides())
         sumValueView.text = "sum of Dices: ${dice.currentDiceValue + dice2.currentDiceValue}"
         rollCountView.text = "You have rolled ${dice2.rollCount} time/s"
 
@@ -155,7 +161,7 @@ class MainActivity : AppCompatActivity() {
         var numRolledView: TextView = findViewById(R.id.sumValue);
         var rollCountView: TextView = findViewById(R.id.timesYouRolled);
 
-        secondDiceImageView.setImageResource(dice2.getDiceImageResource())
+        secondDiceImageView.setImageResource(dice2.getDiceImageResourceFor6Sides())
         numRolledView.text = "You have rolled: ${dice2.currentDiceValue}"
         rollCountView.text = "You have rolled ${dice.rollCount} time/s"
     }
