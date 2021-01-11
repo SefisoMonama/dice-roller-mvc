@@ -3,11 +3,9 @@ package com.strixtechnology.diceroller
 
 
 import android.os.Bundle
-import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.chip.Chip
-import org.w3c.dom.Text
 
 //Declare constant Variables
 const val CURRENT_DICE_VALUE_KEY = "current"
@@ -15,14 +13,11 @@ const val CURRENT_DICE2_VALUE_KEY = "current2"
 const val COUNT_VALUE_KEY = "count"
 const val DICE_SIDE_COUNT_6 = 6
 const val DICE_SIDE_COUNT_8 = 8
-const val DOUBLE_DICES = 2
-const val SINGLE_DICE =1
-
 
 class MainActivity : AppCompatActivity() {
 
     /**
-     * Create new Dice object with 6 sides and roll it
+     * Create new Dice object with 6 and 8 sides and roll it
      */
     var dice = Dice(DICE_SIDE_COUNT_6)
     var dice2 = Dice(DICE_SIDE_COUNT_6)
@@ -39,48 +34,108 @@ class MainActivity : AppCompatActivity() {
         //find View in the layout
         var numberOfDiceToRollView: TextView=findViewById(R.id.numberOfDiceToRoll)
 
+        //find Button in the layout
+        var rollDiceButton: Button = findViewById(R.id.rollDice)
+
         //Prompt the user to choose number of dice/s to roll
         numberOfDiceToRollView.text = "Select the Number of dice/s to roll"
 
-        // Set a click listener on the button to roll the dice when the user taps the button
         //Find chip in the layout
         var sixSidesChip: Chip = findViewById(R.id.sixSides)
         var eightSidesChip: Chip = findViewById(R.id.eightSides)
         var roll1DiceChip: Chip = findViewById(R.id.roll1Dice)
         var roll2DiceChip: Chip = findViewById(R.id.roll2Dices)
 
-        sixSidesChip.isChecked
+        if(sixSidesChip.isChecked()){
+            if(roll1DiceChip.isChecked()){
+                rollDiceButton.setOnClickListener{rollSingleDicesWith6Sides()}
+            }else if(roll2DiceChip.isChecked()){
+                rollDiceButton.setOnClickListener{rollDoubleDicesWith6Sides()}
+            }
+        }else if(eightSidesChip.isChecked()){
+            if(roll1DiceChip.isChecked()){
+                rollDiceButton.setOnClickListener{rollSingleDicesWith8Sides()}
+            }else if(roll2DiceChip.isChecked()){
+                rollDiceButton.setOnClickListener{rollDoubleDicesWith8Sides()}
+            }
+        }
+
     }
     /**
      * when dice is rolled view will be populated with setViewContent content
      */
-    private fun rollDoubleDices() {
+    private fun rollDoubleDicesWith6Sides() {
         dice.roll()
         dice2.roll()
-        setViewContentsFor2Dices()
+        setViewContentsFor2DicesWith6Sides()
     }
-    private fun rollSingleDices() {
-        dice.roll()
+    private fun rollSingleDicesWith6Sides() {
         dice2.roll()
-        setViewContentsFor1Dice()
+        setViewContentsFor1DiceWith6Sides()
     }
-    /**
-     * Add content to your Views
-     *
-     *
-     */
-    fun setViewContentsFor2Dices(){
+
+    private fun rollDoubleDicesWith8Sides() {
+        dice3.roll()
+        dice4.roll()
+        setViewContentsFor2DicesWith8Sides()
+    }
+    private fun rollSingleDicesWith8Sides() {
+        dice4.roll()
+        setViewContentsFor1DiceWith8Sides()
+    }
+     /**
+     * add content to View, to display 2 dices with 8 sides
+    */
+    fun setViewContentsFor2DicesWith8Sides(){
         var diceImageView: ImageView = findViewById(R.id.diceImage)
         var secondDiceImageView: ImageView = findViewById(R.id.secondDiceImage)
         var sumValueView: TextView = findViewById(R.id.sumValue);
-        var rollCountView: TextView = findViewById(R.id.numberAppearanceValue);
+        var rollCountView: TextView = findViewById(R.id.timesYouRolled);
         var doubleNumberView: TextView=findViewById(R.id.sameNumber)
 
+
+        diceImageView.setImageResource(dice3.getDiceImageResource())
+        secondDiceImageView.setImageResource(dice4.getDiceImageResource())
+        sumValueView.text = "sum of Dices: ${dice3.currentDiceValue + dice4.currentDiceValue}"
+        rollCountView.text = "You have rolled ${dice3.rollCount} time/s"
+
+
+        //Compare both dices value to see if they displayed the same values
+        if(dice3.currentDiceValue==dice4.currentDiceValue) {
+            doubleNumberView.text= "Woohoo! you've rolled double numbers"
+        }
+        else{
+            doubleNumberView.text= " "
+        }
+    }
+    /**
+     * add content to View, to display 1 dice with 8 sides
+     */
+    fun setViewContentsFor1DiceWith8Sides() {
+        var diceImageView: ImageView = findViewById(R.id.diceImage)
+        var secondDiceImageView: ImageView = findViewById(R.id.secondDiceImage)
+        var numRolledView: TextView = findViewById(R.id.sumValue);
+        var rollCountView: TextView = findViewById(R.id.timesYouRolled);
+
+        secondDiceImageView.setImageResource(dice4.getDiceImageResource())
+        numRolledView.text = "You have rolled: ${dice4.currentDiceValue}"
+        rollCountView.text = "You have rolled ${dice3.rollCount} time/s"
+
+    }
+    /**
+     * add content to View, to display 2 dices with 6 sides
+     */
+    fun setViewContentsFor2DicesWith6Sides(){
+        var diceImageView: ImageView = findViewById(R.id.diceImage)
+        var secondDiceImageView: ImageView = findViewById(R.id.secondDiceImage)
+        var sumValueView: TextView = findViewById(R.id.sumValue);
+        var rollCountView: TextView = findViewById(R.id.timesYouRolled);
+        var doubleNumberView: TextView=findViewById(R.id.sameNumber)
 
         diceImageView.setImageResource(dice.getDiceImageResource())
         secondDiceImageView.setImageResource(dice2.getDiceImageResource())
         sumValueView.text = "sum of Dices: ${dice.currentDiceValue + dice2.currentDiceValue}"
-        rollCountView.text = "You have rolled ${dice.rollCount} time/s"
+        rollCountView.text = "You have rolled ${dice2.rollCount} time/s"
 
 
         //Compare both dices value to see if they displayed the same values
@@ -91,20 +146,18 @@ class MainActivity : AppCompatActivity() {
             doubleNumberView.text= " "
         }
     }
-
-    fun setViewContentsFor1Dice() {
+    /**
+     * add content to View, to display 1 dice with 6 sides
+     */
+    fun setViewContentsFor1DiceWith6Sides() {
         var diceImageView: ImageView = findViewById(R.id.diceImage)
         var secondDiceImageView: ImageView = findViewById(R.id.secondDiceImage)
         var numRolledView: TextView = findViewById(R.id.sumValue);
-        var rollCountView: TextView = findViewById(R.id.numberAppearanceValue);
-        //var doubleNumberView: TextView=findViewById(R.id.sameNumber)
+        var rollCountView: TextView = findViewById(R.id.timesYouRolled);
 
-
-        //diceImageView.setImageResource(dice.getDiceImageResource())
         secondDiceImageView.setImageResource(dice2.getDiceImageResource())
         numRolledView.text = "You have rolled: ${dice2.currentDiceValue}"
         rollCountView.text = "You have rolled ${dice.rollCount} time/s"
-
     }
 
     /**
@@ -124,6 +177,6 @@ class MainActivity : AppCompatActivity() {
         dice.currentDiceValue= savedInstanceState.getInt(CURRENT_DICE_VALUE_KEY)
         dice2.currentDiceValue= savedInstanceState.getInt(CURRENT_DICE2_VALUE_KEY)
         dice.rollCount= savedInstanceState.getInt(COUNT_VALUE_KEY)
-        setViewContentsFor2Dices()
+        //setViewContentsFor2Dices()
     }
 }
