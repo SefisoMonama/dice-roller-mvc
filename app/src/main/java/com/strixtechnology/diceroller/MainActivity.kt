@@ -62,12 +62,11 @@ class MainActivity : AppCompatActivity() {
         if(sixSidesChip.isChecked()){
             if(roll1DiceChip.isChecked()){
                 rollSingleDicesWith6Sides()
-                //set dice2View invisible to only display 1 dice
                 var diceImageView: ImageView = findViewById(R.id.diceImage)
-                diceImageView.setVisibility(View.INVISIBLE)
+                //set dice2View to be removed to only display 1 dice
+                diceImageView.setVisibility(View.GONE)
             }else if(roll2DiceChip.isChecked()){
                 rollDoubleDicesWith6Sides()
-                //set dice2View visible again to be able to display 2 dices
                 var diceImageView: ImageView = findViewById(R.id.diceImage)
                 diceImageView.setVisibility(View.VISIBLE)
             }
@@ -77,12 +76,11 @@ class MainActivity : AppCompatActivity() {
         if(eightSidesChip.isChecked()){
             if(roll1DiceChip.isChecked()){
                 rollSingleDicesWith8Sides()
-                //set dice2View invisible to only display 1 dice
                 var diceImageView: ImageView = findViewById(R.id.diceImage)
-                diceImageView.setVisibility(View.INVISIBLE)
+                //set dice2View to be removed to only display 1 dice
+                diceImageView.setVisibility(View.GONE)
             }else if(roll2DiceChip.isChecked()){
                 rollDoubleDicesWith8Sides()
-                //set dice2View visible again to be able to display 2 dices
                 var diceImageView: ImageView = findViewById(R.id.diceImage)
                 diceImageView.setVisibility(View.VISIBLE)
             }
@@ -133,7 +131,7 @@ class MainActivity : AppCompatActivity() {
         diceImageView.setImageResource(dice3.getDiceImageResourceFor8Sides())
         secondDiceImageView.setImageResource(dice4.getDiceImageResourceFor8Sides())
         sumValueView.text = "sum of Dices: ${dice3.currentDiceValue + dice4.currentDiceValue}"
-        rollCountView.text = "You have rolled ${dice3.rollCount} time/s"
+        rollCountView.text = "You have rolled ${dice4.rollCount} time/s"
 
 
         //Compare both dices value to see if they displayed the same values
@@ -155,7 +153,7 @@ class MainActivity : AppCompatActivity() {
 
         secondDiceImageView.setImageResource(dice4.getDiceImageResourceFor8Sides())
         numRolledView.text = "You have rolled: ${dice4.currentDiceValue}"
-        rollCountView.text = "You have rolled ${dice3.rollCount} time/s"
+        rollCountView.text = "You have rolled ${dice4.rollCount} time/s"
 
     }
     /**
@@ -193,7 +191,7 @@ class MainActivity : AppCompatActivity() {
 
         secondDiceImageView.setImageResource(dice2.getDiceImageResourceFor6Sides())
         numRolledView.text = "You have rolled: ${dice2.currentDiceValue}"
-        rollCountView.text = "You have rolled ${dice.rollCount} time/s"
+        rollCountView.text = "You have rolled ${dice2.rollCount} time/s"
     }
 
     /**
