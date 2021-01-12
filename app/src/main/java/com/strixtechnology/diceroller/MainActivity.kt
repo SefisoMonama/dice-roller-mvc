@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipDrawable
 import com.google.android.material.chip.ChipGroup
+import com.strixtechnology.diceroller.databinding.ActivityMainBinding
 
 //Declare constant Variables
 const val CURRENT_DICE_VALUE_KEY = "current"
@@ -27,12 +28,16 @@ class MainActivity : AppCompatActivity() {
     var dice3 = Dice(DICE_SIDE_COUNT_8)
     var dice4 = Dice(DICE_SIDE_COUNT_8)
 
+    private lateinit var binding: ActivityMainBinding
+
     /**
      * This method is called when the Activity is created.
      */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
         //find View in the layout
         var numberOfDiceToRollView: TextView=findViewById(R.id.numberOfDiceToRoll)
@@ -45,13 +50,13 @@ class MainActivity : AppCompatActivity() {
 
         //set onclick listener for rollDiceButton to display number of dice/s and sides as filtered by user
         rollDiceButton.setOnClickListener{rollDice()}
-
     }
 
     /**
      *
      */
     private fun rollDice(){
+
         //Find chip in the layout
         var sixSidesChip: Chip = findViewById(R.id.sixSides)
         var eightSidesChip: Chip = findViewById(R.id.eightSides)
@@ -121,77 +126,51 @@ class MainActivity : AppCompatActivity() {
      * add content to View, to display 2 dices with 8 sides
     */
     fun setViewContentsFor2DicesWith8Sides(){
-        var diceImageView: ImageView = findViewById(R.id.diceImage)
-        var secondDiceImageView: ImageView = findViewById(R.id.secondDiceImage)
-        var sumValueView: TextView = findViewById(R.id.sumValue);
-        var rollCountView: TextView = findViewById(R.id.timesYouRolled);
-        var doubleNumberView: TextView=findViewById(R.id.sameNumber)
-
-
-        diceImageView.setImageResource(dice3.getDiceImageResourceFor8Sides())
-        secondDiceImageView.setImageResource(dice4.getDiceImageResourceFor8Sides())
-        sumValueView.text = "sum of Dices: ${dice3.currentDiceValue + dice4.currentDiceValue}"
-        rollCountView.text = "You have rolled ${dice4.rollCount} time/s"
-
+         binding.diceImage.setImageResource(dice3.getDiceImageResourceFor8Sides())
+         binding.secondDiceImage.setImageResource(dice4.getDiceImageResourceFor8Sides())
+         binding.sumValue.text = "sum of Dices: ${dice3.currentDiceValue + dice4.currentDiceValue}"
+         binding.timesYouRolled.text = "You have rolled ${dice4.rollCount} time/s"
 
         //Compare both dices value to see if they displayed the same values
         if(dice3.currentDiceValue==dice4.currentDiceValue) {
-            doubleNumberView.text= "Woohoo! you've rolled double numbers"
+            binding.sameNumber.text= "Woohoo! you've rolled double numbers"
         }
         else{
-            doubleNumberView.text= " "
+            binding.sameNumber.text= " "
         }
     }
     /**
      * add content to View, to display 1 dice with 8 sides
      */
     fun setViewContentsFor1DiceWith8Sides() {
-        var diceImageView: ImageView = findViewById(R.id.diceImage)
-        var secondDiceImageView: ImageView = findViewById(R.id.secondDiceImage)
-        var numRolledView: TextView = findViewById(R.id.sumValue);
-        var rollCountView: TextView = findViewById(R.id.timesYouRolled);
-
-        secondDiceImageView.setImageResource(dice4.getDiceImageResourceFor8Sides())
-        numRolledView.text = "You have rolled: ${dice4.currentDiceValue}"
-        rollCountView.text = "You have rolled ${dice4.rollCount} time/s"
-
+        binding.secondDiceImage.setImageResource(dice4.getDiceImageResourceFor8Sides())
+        binding.sumValue.text = "You have rolled: ${dice4.currentDiceValue}"
+        binding.timesYouRolled.text = "You have rolled ${dice4.rollCount} time/s"
     }
     /**
      * add content to View, to display 2 dices with 6 sides
      */
     fun setViewContentsFor2DicesWith6Sides(){
-        var diceImageView: ImageView = findViewById(R.id.diceImage)
-        var secondDiceImageView: ImageView = findViewById(R.id.secondDiceImage)
-        var sumValueView: TextView = findViewById(R.id.sumValue);
-        var rollCountView: TextView = findViewById(R.id.timesYouRolled);
-        var doubleNumberView: TextView=findViewById(R.id.sameNumber)
 
-        diceImageView.setImageResource(dice.getDiceImageResourceFor6Sides())
-        secondDiceImageView.setImageResource(dice2.getDiceImageResourceFor6Sides())
-        sumValueView.text = "sum of Dices: ${dice.currentDiceValue + dice2.currentDiceValue}"
-        rollCountView.text = "You have rolled ${dice2.rollCount} time/s"
-
+        binding.diceImage.setImageResource(dice.getDiceImageResourceFor6Sides())
+        binding.secondDiceImage.setImageResource(dice2.getDiceImageResourceFor6Sides())
+        binding.sumValue.text = "sum of Dices: ${dice.currentDiceValue + dice2.currentDiceValue}"
+        binding.sameNumber.text = "You have rolled ${dice2.rollCount} time/s"
 
         //Compare both dices value to see if they displayed the same values
         if(dice.currentDiceValue==dice2.currentDiceValue) {
-            doubleNumberView.text= "Woohoo! you've rolled double numbers"
-        }
-        else{
-            doubleNumberView.text= " "
+            binding.sameNumber.text= "Woohoo! you've rolled double numbers"
+        }else{
+            binding.sameNumber.text= " "
         }
     }
     /**
      * add content to View, to display 1 dice with 6 sides
      */
     fun setViewContentsFor1DiceWith6Sides() {
-        var diceImageView: ImageView = findViewById(R.id.diceImage)
-        var secondDiceImageView: ImageView = findViewById(R.id.secondDiceImage)
-        var numRolledView: TextView = findViewById(R.id.sumValue);
-        var rollCountView: TextView = findViewById(R.id.timesYouRolled);
-
-        secondDiceImageView.setImageResource(dice2.getDiceImageResourceFor6Sides())
-        numRolledView.text = "You have rolled: ${dice2.currentDiceValue}"
-        rollCountView.text = "You have rolled ${dice2.rollCount} time/s"
+        binding.secondDiceImage.setImageResource(dice2.getDiceImageResourceFor8Sides())
+        binding.sumValue.text = "You have rolled: ${dice2.currentDiceValue}"
+        binding.timesYouRolled.text = "You have rolled ${dice2.rollCount} time/s"
     }
 
     /**
