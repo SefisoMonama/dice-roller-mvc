@@ -42,28 +42,36 @@ class MainActivity : AppCompatActivity() {
         //Prompt the user to choose number of dice/s to roll
         numberOfDiceToRollView.text = "Select the Number of dice/s to roll"
 
+        //set onclick listener for rollDiceButton to display number of dice/s and sides as filtered by user
+        rollDiceButton.setOnClickListener{rollDice()}
+
+    }
+
+    /**
+     *
+     */
+    private fun rollDice(){
         //Find chip in the layout
         var sixSidesChip: Chip = findViewById(R.id.sixSides)
         var eightSidesChip: Chip = findViewById(R.id.eightSides)
         var roll1DiceChip: Chip = findViewById(R.id.roll1Dice)
         var roll2DiceChip: Chip = findViewById(R.id.roll2Dices)
-        var chooseDiceSidesChip: ChipGroup  =findViewById(R.id.chooseDiceSides)
-        var numberOfDiceToRollChip: ChipGroup = findViewById(R.id.numberOfDice)
 
-
+        //conditional formatting to roll certain number of dice/s and sides as filtered by user
         if(sixSidesChip.isChecked()){
             if(roll1DiceChip.isChecked()){
-                rollDiceButton.setOnClickListener{rollSingleDicesWith6Sides()}
+                rollSingleDicesWith6Sides()
             }else if(roll2DiceChip.isChecked()){
-                rollDiceButton.setOnClickListener{rollDoubleDicesWith6Sides()}
+                rollDoubleDicesWith6Sides()
             }
         }
 
+        //conditional formatting to roll certain number of dice/s and sides as filtered by user
         if(eightSidesChip.isChecked()){
             if(roll1DiceChip.isChecked()){
-                rollDiceButton.setOnClickListener{rollSingleDicesWith8Sides()}
+                rollSingleDicesWith8Sides()
             }else if(roll2DiceChip.isChecked()){
-                rollDiceButton.setOnClickListener{rollDoubleDicesWith8Sides()}
+                rollDoubleDicesWith8Sides()
             }
         }
     }
@@ -75,16 +83,25 @@ class MainActivity : AppCompatActivity() {
         dice2.roll()
         setViewContentsFor2DicesWith6Sides()
     }
+
+    /**
+     * display single dice with 6 sides
+     */
     private fun rollSingleDicesWith6Sides() {
         dice2.roll()
         setViewContentsFor1DiceWith6Sides()
     }
-
+    /**
+     * display double dice with 6 sides
+     */
     private fun rollDoubleDicesWith8Sides() {
         dice3.roll()
         dice4.roll()
         setViewContentsFor2DicesWith8Sides()
     }
+    /**
+     * display single dice with 8 sides
+     */
     private fun rollSingleDicesWith8Sides() {
         dice4.roll()
         setViewContentsFor1DiceWith8Sides()
