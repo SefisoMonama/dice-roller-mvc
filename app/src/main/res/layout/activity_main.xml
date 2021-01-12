@@ -11,38 +11,35 @@
         android:id="@+id/sameNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="16dp"
         android:textAlignment="center"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/sumValue"
+        app:layout_constraintBottom_toTopOf="@+id/chooseNumberOfSides"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.472"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.029"
         tools:text="sameNumbers" />
 
     <TextView
         android:id="@+id/chooseNumberOfSides"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
         android:text="@string/how_many_sides_should_your_dice_have"
         android:textAlignment="center"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/numberOfDiceToRoll"
+        app:layout_constraintBottom_toTopOf="@+id/chooseDiceSides"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sameNumber"
-        app:layout_constraintVertical_bias="0.36" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/chooseDiceSides"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/numberOfDiceToRoll"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/chooseNumberOfSides"
         app:singleSelection="true">
 
         <com.google.android.material.chip.Chip
@@ -66,11 +63,11 @@
         android:id="@+id/sumValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="52dp"
+        android:layout_marginBottom="12dp"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/secondDiceImage"
+        app:layout_constraintBottom_toTopOf="@+id/diceImage"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         tools:text="TextView2" />
 
@@ -78,39 +75,41 @@
         android:id="@+id/diceImage"
         android:layout_width="160dp"
         android:layout_height="200dp"
+        android:layout_marginBottom="88dp"
         android:contentDescription="@string/todo"
         android:scaleType="centerInside"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.792"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.768"
+        app:layout_constraintStart_toEndOf="@+id/secondDiceImage"
         tools:srcCompat="@drawable/dice_2" />
 
     <ImageView
         android:id="@+id/secondDiceImage"
         android:layout_width="160dp"
         android:layout_height="200dp"
-        android:layout_marginTop="408dp"
+        android:layout_marginTop="433dp"
+        android:layout_marginBottom="88dp"
+        android:adjustViewBounds="false"
         android:contentDescription="@string/todo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.199"
+        android:cropToPadding="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/diceImage"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/timesYouRolled"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="44dp"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.531"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/secondDiceImage"
-        app:layout_constraintVertical_bias="0.427"
         tools:text="textView3" />
 
     <TextView
@@ -119,22 +118,20 @@
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:textSize="22sp"
-        app:layout_constraintBottom_toTopOf="@+id/sumValue"
+        app:layout_constraintBottom_toTopOf="@+id/numberOfDice"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sameNumber"
-        app:layout_constraintVertical_bias="0.525"
         tools:text="Choose Number of Dice to roll" />
 
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/numberOfDice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/rollDice"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.524"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/numberOfDiceToRoll"
         app:singleSelection="true">
 
         <com.google.android.material.chip.Chip
@@ -157,7 +154,7 @@
         android:id="@+id/rollDice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="16dp"
         android:text="@string/roll"
         app:layout_constraintBottom_toTopOf="@+id/sumValue"
         app:layout_constraintEnd_toEndOf="parent"

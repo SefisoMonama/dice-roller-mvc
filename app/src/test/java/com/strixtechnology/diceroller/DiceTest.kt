@@ -24,7 +24,7 @@ class DiceTest : TestCase() {
     }
 
     /**
-     * Test if image dice_1..8 will be displayed if current Value is 1..6
+     * Test if image dice_1..6 will be displayed if
      */
     @Test
     fun testCorrectDrawableLoadsIfDiceRollsSix() {
