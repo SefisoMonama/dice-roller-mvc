@@ -39,17 +39,11 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        //find View in the layout
-        var numberOfDiceToRollView: TextView=findViewById(R.id.numberOfDiceToRoll)
-
-        //find Button in the layout
-        var rollDiceButton: Button = findViewById(R.id.rollDice)
-
         //Prompt the user to choose number of dice/s to roll
-        numberOfDiceToRollView.text = "Select the Number of dice/s to roll"
+        binding.numberOfDiceToRoll!!.text = "Select the Number of dice/s to roll"
 
         //set onclick listener for rollDiceButton to display number of dice/s and sides as filtered by user
-        rollDiceButton.setOnClickListener{rollDice()}
+        binding.rollDice!!.setOnClickListener{rollDice()}
     }
 
     /**
@@ -57,37 +51,27 @@ class MainActivity : AppCompatActivity() {
      */
     private fun rollDice(){
 
-        //Find chip in the layout
-        var sixSidesChip: Chip = findViewById(R.id.sixSides)
-        var eightSidesChip: Chip = findViewById(R.id.eightSides)
-        var roll1DiceChip: Chip = findViewById(R.id.roll1Dice)
-        var roll2DiceChip: Chip = findViewById(R.id.roll2Dices)
-
         //conditional formatting to roll certain number of dice/s and sides as filtered by user
-        if(sixSidesChip.isChecked()){
-            if(roll1DiceChip.isChecked()){
+        if(binding.sixSides!!.isChecked()){
+            if(binding.roll1Dice!!.isChecked()){
                 rollSingleDicesWith6Sides()
-                var diceImageView: ImageView = findViewById(R.id.diceImage)
                 //set dice2View to be removed to only display 1 dice
-                diceImageView.setVisibility(View.GONE)
-            }else if(roll2DiceChip.isChecked()){
+                binding.diceImage.setVisibility(View.GONE)
+            }else if(binding.roll2Dices!!.isChecked()){
                 rollDoubleDicesWith6Sides()
-                var diceImageView: ImageView = findViewById(R.id.diceImage)
-                diceImageView.setVisibility(View.VISIBLE)
+                binding.diceImage.setVisibility(View.VISIBLE)
             }
         }
 
         //conditional formatting to roll certain number of dice/s and sides as filtered by user
-        if(eightSidesChip.isChecked()){
-            if(roll1DiceChip.isChecked()){
+        if(binding.eightSides!!.isChecked()){
+            if(binding.roll1Dice!!.isChecked()){
                 rollSingleDicesWith8Sides()
-                var diceImageView: ImageView = findViewById(R.id.diceImage)
                 //set dice2View to be removed to only display 1 dice
-                diceImageView.setVisibility(View.GONE)
-            }else if(roll2DiceChip.isChecked()){
+                binding.diceImage.setVisibility(View.GONE)
+            }else if(binding.roll2Dices!!.isChecked()){
                 rollDoubleDicesWith8Sides()
-                var diceImageView: ImageView = findViewById(R.id.diceImage)
-                diceImageView.setVisibility(View.VISIBLE)
+                binding.diceImage.setVisibility(View.VISIBLE)
             }
         }
     }
@@ -126,6 +110,8 @@ class MainActivity : AppCompatActivity() {
      * add content to View, to display 2 dices with 8 sides
     */
     fun setViewContentsFor2DicesWith8Sides(){
+
+         //find views in the layout
          binding.diceImage.setImageResource(dice3.getDiceImageResourceFor8Sides())
          binding.secondDiceImage.setImageResource(dice4.getDiceImageResourceFor8Sides())
          binding.sumValue.text = "sum of Dices: ${dice3.currentDiceValue + dice4.currentDiceValue}"
@@ -134,8 +120,7 @@ class MainActivity : AppCompatActivity() {
         //Compare both dices value to see if they displayed the same values
         if(dice3.currentDiceValue==dice4.currentDiceValue) {
             binding.sameNumber.text= "Woohoo! you've rolled double numbers"
-        }
-        else{
+        }else{
             binding.sameNumber.text= " "
         }
     }
@@ -151,11 +136,11 @@ class MainActivity : AppCompatActivity() {
      * add content to View, to display 2 dices with 6 sides
      */
     fun setViewContentsFor2DicesWith6Sides(){
-
+        //find views in the layout
         binding.diceImage.setImageResource(dice.getDiceImageResourceFor6Sides())
         binding.secondDiceImage.setImageResource(dice2.getDiceImageResourceFor6Sides())
         binding.sumValue.text = "sum of Dices: ${dice.currentDiceValue + dice2.currentDiceValue}"
-        binding.sameNumber.text = "You have rolled ${dice2.rollCount} time/s"
+        binding.timesYouRolled.text = "You have rolled ${dice2.rollCount} time/s"
 
         //Compare both dices value to see if they displayed the same values
         if(dice.currentDiceValue==dice2.currentDiceValue) {
@@ -168,7 +153,8 @@ class MainActivity : AppCompatActivity() {
      * add content to View, to display 1 dice with 6 sides
      */
     fun setViewContentsFor1DiceWith6Sides() {
-        binding.secondDiceImage.setImageResource(dice2.getDiceImageResourceFor8Sides())
+        //find views in the layout
+        binding.secondDiceImage.setImageResource(dice2.getDiceImageResourceFor6Sides())
         binding.sumValue.text = "You have rolled: ${dice2.currentDiceValue}"
         binding.timesYouRolled.text = "You have rolled ${dice2.rollCount} time/s"
     }
