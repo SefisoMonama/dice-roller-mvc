@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-
+        setSupportActionBar(findViewById(R.id.my_toolbar))
         //Prompt the user to choose number of dice/s to roll
         binding.numberOfDiceToRoll!!.text = "Select the Number of dice/s to roll"
 
