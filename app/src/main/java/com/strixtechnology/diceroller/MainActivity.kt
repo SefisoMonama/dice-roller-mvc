@@ -3,12 +3,12 @@ package com.strixtechnology.diceroller
 
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.material.chip.Chip
-import com.google.android.material.chip.ChipDrawable
-import com.google.android.material.chip.ChipGroup
+import androidx.core.view.get
 import com.strixtechnology.diceroller.databinding.ActivityMainBinding
 
 //Declare constant Variables
@@ -39,13 +39,23 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
         setSupportActionBar(findViewById(R.id.my_toolbar))
-        //Prompt the user to choose number of dice/s to roll
-        binding.numberOfDiceToRoll!!.text = "Select the Number of dice/s to roll"
-
-        //set onclick listener for rollDiceButton to display number of dice/s and sides as filtered by user
-        binding.rollDice!!.setOnClickListener{rollDice()}
+    }
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        //val inflater = menuInflater
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return super.onCreateOptionsMenu(menu)
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        var id: Int = item.getItemId();
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.my_toolbar) {
+            Toast.makeText(this, "Action clicked", Toast.LENGTH_LONG).show()
+            return true
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
     /**
      *
      */
