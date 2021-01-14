@@ -9,9 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DiceRoller">
-        <meta-data
-            android:name="com.google.android.actions"
-            android:resource="@xml/manu_main" />
+        <activity android:name=".SettingsActivity"></activity>
 
         <activity
             android:name=".MainActivity"
