@@ -2,12 +2,15 @@ package com.strixtechnology.diceroller
 
 
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.ContextMenu
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.core.view.get
 import com.strixtechnology.diceroller.databinding.ActivityMainBinding
 
@@ -39,7 +42,12 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
         setSupportActionBar(findViewById(R.id.my_toolbar))
+        binding.chooseNumberOfSides!!.text ="Choose number of Dice/s sides"
+        binding.numberOfDiceToRoll!!.text = "Number of dice/s to roll"
+        binding.rollDice!!.setOnClickListener{rollDice()}
+
     }
+
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         //val inflater = menuInflater
         getMenuInflater().inflate(R.menu.menu_main, menu);
@@ -53,7 +61,11 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "Action clicked", Toast.LENGTH_LONG).show()
             return true
         }
-
+        var settingsId: Int= item.itemId
+        if(settingsId == R.id.action_favorite ) {
+            val intent = Intent(this, SettingsActivity::class.java)
+            startActivity(intent)
+        }
         return super.onOptionsItemSelected(item);
     }
     /**

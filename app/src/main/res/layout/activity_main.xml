@@ -26,12 +26,14 @@
         android:id="@+id/sameNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="71dp"
         android:layout_marginBottom="16dp"
         android:textAlignment="center"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/chooseNumberOfSides"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:text="sameNumbers" />
 
     <TextView
@@ -50,7 +52,7 @@
         android:id="@+id/chooseDiceSides"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="12dp"
         app:layout_constraintBottom_toTopOf="@+id/numberOfDiceToRoll"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -62,8 +64,8 @@
             style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/_6"
             android:checked="true"
+            android:text="@string/_6"
             android:textSize="48sp" />
 
         <com.google.android.material.chip.Chip
@@ -78,10 +80,11 @@
         android:id="@+id/sumValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="300dp"
+        android:layout_marginBottom="324dp"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
         tools:text="TextView2" />
 
@@ -89,7 +92,7 @@
         android:id="@+id/diceImage"
         android:layout_width="160dp"
         android:layout_height="200dp"
-        android:layout_marginTop="443dp"
+        android:layout_marginTop="480dp"
         android:layout_marginBottom="88dp"
         android:contentDescription="@string/todo"
         android:scaleType="centerInside"
@@ -171,7 +174,7 @@
         android:id="@+id/rollDice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="24dp"
         android:text="@string/roll"
         app:layout_constraintBottom_toTopOf="@+id/sumValue"
         app:layout_constraintEnd_toEndOf="parent"

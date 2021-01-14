@@ -10,5 +10,4 @@
         android:title="@string/user"
         android:icon="@drawable/set"
         app:showAsAction="ifRoom"></item>
-
 </menu>
