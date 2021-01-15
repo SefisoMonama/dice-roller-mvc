@@ -14,12 +14,11 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.view.get
 import com.strixtechnology.diceroller.databinding.ActivityMainBinding
 
-
 //Declare constant Variables
 const val CURRENT_DICE_VALUE_KEY = "current"
 const val CURRENT_DICE2_VALUE_KEY = "current2"
 const val COUNT_VALUE_KEY = "count"
-//const val DICE_SIDE_COUNT_6 = 6
+const val DICE_SIDE_COUNT_6 = 6
 const val DICE_SIDE_COUNT_8 = 8
 
 class MainActivity : AppCompatActivity() {
@@ -28,9 +27,15 @@ class MainActivity : AppCompatActivity() {
      * Create new Dice object with 6 and 8 sides and roll it
      */
     var dice = Dice(DICE_SIDE_COUNT_6)
-    //var dice2 = Dice(DICE_SIDE_COUNT_6)
+    var dice2 = Dice(DICE_SIDE_COUNT_6)
     var dice3 = Dice(DICE_SIDE_COUNT_8)
     var dice4 = Dice(DICE_SIDE_COUNT_8)
+
+    var sixSidesChecked: Boolean = true
+    var eightSidesChecked: Boolean = false
+    var useSingleDice: Boolean = true
+    var useDoubleDices: Boolean = false
+
 
     private lateinit var binding: ActivityMainBinding
 
@@ -43,9 +48,9 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
         setSupportActionBar(findViewById(R.id.my_toolbar))
-        //binding.chooseNumberOfSides!!.text ="Choose number of Dice/s sides"
+       // binding.chooseNumberOfSides!!.text ="Choose number of Dice/s sides"
         //binding.numberOfDiceToRoll!!.text = "Number of dice/s to roll"
-       //binding.rollDice!!.setOnClickListener{rollDice()}
+        binding.rollDice!!.setOnClickListener{rollDice()}
 
     }
 
@@ -62,30 +67,61 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "Action clicked", Toast.LENGTH_LONG).show()
             return true
         }
-        var settingsId: Int= item.itemId
-        if(settingsId == R.id.action_favorite ) {
-            val intent = Intent(this, SettingsActivity::class.java)
-            startActivity(intent)
+        var settings: Int= item.itemId
+        if(settings == R.id.action_favorite ){
+        val intent = Intent(this, SettingsActivity::class.java)
+        startActivity(intent)
         }
         return super.onOptionsItemSelected(item);
     }
+    /**
+     *
+     */
 
+
+    private fun rollDice(){
+
+        //conditional formatting to roll certain number of dice/s and sides as filtered by user
+        if(sixSidesChecked == true){
+            if(useSingleDice == true){
+                rollSingleDicesWith6Sides()
+                //set dice2View to be removed to only display 1 dice
+                binding.diceImage.setVisibility(View.GONE)
+            }else if(useDoubleDices == true){
+                rollDoubleDicesWith6Sides()
+                binding.diceImage.setVisibility(View.VISIBLE)
+            }
+        }
+
+
+        //conditional formatting to roll certain number of dice/s and sides as filtered by user
+        if(eightSidesChecked ==true){
+            if(useSingleDice ==true){
+                rollSingleDicesWith8Sides()
+                //set dice2View to be removed to only display 1 dice
+                binding.diceImage.setVisibility(View.GONE)
+            }else if(useDoubleDices==true){
+                rollDoubleDicesWith8Sides()
+                binding.diceImage.setVisibility(View.VISIBLE)
+            }
+        }
+    }
     /**
      * when dice is rolled view will be populated with setViewContent content
      */
     private fun rollDoubleDicesWith6Sides() {
         dice.roll()
-        //dice2.roll()
-        //setViewContentsFor2DicesWith6Sides()
+        dice2.roll()
+        setViewContentsFor2DicesWith6Sides()
     }
 
     /**
      * display single dice with 6 sides
-
+     */
     private fun rollSingleDicesWith6Sides() {
-        //dice2.roll()
+        dice2.roll()
         setViewContentsFor1DiceWith6Sides()
-    }*/
+    }
     /**
      * display double dice with 6 sides
      */
@@ -129,7 +165,7 @@ class MainActivity : AppCompatActivity() {
     }
     /**
      * add content to View, to display 2 dices with 6 sides
-
+     */
     fun setViewContentsFor2DicesWith6Sides(){
         //find views in the layout
         binding.diceImage.setImageResource(dice.getDiceImageResourceFor6Sides())
@@ -143,32 +179,34 @@ class MainActivity : AppCompatActivity() {
         }else{
             binding.sameNumber.text= " "
         }
-    }*/
+    }
     /**
      * add content to View, to display 1 dice with 6 sides
+     */
     fun setViewContentsFor1DiceWith6Sides() {
         //find views in the layout
         binding.secondDiceImage.setImageResource(dice2.getDiceImageResourceFor6Sides())
         binding.sumValue.text = "You have rolled: ${dice2.currentDiceValue}"
         binding.timesYouRolled.text = "You have rolled ${dice2.rollCount} time/s"
-    }*/
+    }
 
     /**
     *Store/Restore values (dices and rollCount) when the app gets onStop() or onDestroy()
+    */
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putInt(CURRENT_DICE_VALUE_KEY, dice.currentDiceValue)
         outState.putInt(CURRENT_DICE2_VALUE_KEY, dice2.currentDiceValue)
         outState.putInt(COUNT_VALUE_KEY, dice.rollCount)
-    }*/
+    }
     /**
      * Restore dice State(dice values and rollCount) and Updates UI after the screen rotation
-
+     */
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
         dice.currentDiceValue= savedInstanceState.getInt(CURRENT_DICE_VALUE_KEY)
         dice2.currentDiceValue= savedInstanceState.getInt(CURRENT_DICE2_VALUE_KEY)
         dice.rollCount= savedInstanceState.getInt(COUNT_VALUE_KEY)
         //setViewContentsFor2Dices()
-    }*/
+    }
 }
