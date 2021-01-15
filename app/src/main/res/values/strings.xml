@@ -10,4 +10,5 @@
     <string name="_2_dices">2 Dices</string>
     <string name="roll">Roll</string>
     <string name="user">User</string>
+    <string name="choose_number_of_dice_to_roll">Choose Number of Dice to roll</string>
 </resources>
