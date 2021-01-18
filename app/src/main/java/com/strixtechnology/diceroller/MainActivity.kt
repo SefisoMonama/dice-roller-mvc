@@ -32,10 +32,7 @@ class MainActivity : AppCompatActivity() {
     var dice4 = Dice(DICE_SIDE_COUNT_8)
 
     var sixSidesChecked: Boolean = false
-    var eightSidesChecked: Boolean = true
     var useSingleDice: Boolean = false
-    var useDoubleDices: Boolean = true
-
 
     private lateinit var binding: ActivityMainBinding
 
@@ -47,12 +44,11 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-        setSupportActionBar(findViewById(R.id.my_toolbar))
+        setSupportActionBar(binding.myToolbar)
         binding.rollDice!!.setOnClickListener{rollDice()}
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        //val inflater = menuInflater
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return super.onCreateOptionsMenu(menu)
     }
@@ -64,15 +60,14 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
         }
         return super.onOptionsItemSelected(item);
-        binding
     }
     /**
      *
      */
     private fun rollDice(){
         //conditional formatting to roll certain number of dice/s and sides as filtered by user
-        if(sixSidesChecked == true){
-            if(useSingleDice == true){
+        if(sixSidesChecked){
+            if(useSingleDice){
                 rollSingleDicesWith6Sides()
                 //set dice2View to be removed to only display 1 dice
                 binding.diceImage.setVisibility(View.GONE)
@@ -81,11 +76,11 @@ class MainActivity : AppCompatActivity() {
                 binding.diceImage.setVisibility(View.VISIBLE)
             }
          }else{
-            if (useSingleDice == true) {
+            if (useSingleDice){
                 rollSingleDicesWith8Sides()
                 //set dice2View to be removed to only display 1 dice
                 binding.diceImage.setVisibility(View.GONE)
-            }else {
+            }else{
                 rollDoubleDicesWith8Sides()
                 binding.diceImage.setVisibility(View.VISIBLE)
             }
