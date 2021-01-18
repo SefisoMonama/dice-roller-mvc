@@ -31,10 +31,10 @@ class MainActivity : AppCompatActivity() {
     var dice3 = Dice(DICE_SIDE_COUNT_8)
     var dice4 = Dice(DICE_SIDE_COUNT_8)
 
-    var sixSidesChecked: Boolean = true
-    var eightSidesChecked: Boolean = false
-    var useSingleDice: Boolean = true
-    var useDoubleDices: Boolean = false
+    var sixSidesChecked: Boolean = false
+    var eightSidesChecked: Boolean = true
+    var useSingleDice: Boolean = false
+    var useDoubleDices: Boolean = true
 
 
     private lateinit var binding: ActivityMainBinding
@@ -48,10 +48,7 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
         setSupportActionBar(findViewById(R.id.my_toolbar))
-       // binding.chooseNumberOfSides!!.text ="Choose number of Dice/s sides"
-        //binding.numberOfDiceToRoll!!.text = "Number of dice/s to roll"
         binding.rollDice!!.setOnClickListener{rollDice()}
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -61,46 +58,34 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        var id: Int = item.getItemId();
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.my_toolbar) {
-            Toast.makeText(this, "Action clicked", Toast.LENGTH_LONG).show()
-            return true
-        }
         var settings: Int= item.itemId
         if(settings == R.id.action_favorite ){
         val intent = Intent(this, SettingsActivity::class.java)
         startActivity(intent)
         }
         return super.onOptionsItemSelected(item);
+        binding
     }
     /**
      *
      */
-
-
     private fun rollDice(){
-
         //conditional formatting to roll certain number of dice/s and sides as filtered by user
         if(sixSidesChecked == true){
             if(useSingleDice == true){
                 rollSingleDicesWith6Sides()
                 //set dice2View to be removed to only display 1 dice
                 binding.diceImage.setVisibility(View.GONE)
-            }else if(useDoubleDices == true){
+            }else {
                 rollDoubleDicesWith6Sides()
                 binding.diceImage.setVisibility(View.VISIBLE)
             }
-        }
-
-
-        //conditional formatting to roll certain number of dice/s and sides as filtered by user
-        if(eightSidesChecked ==true){
-            if(useSingleDice ==true){
+         }else{
+            if (useSingleDice == true) {
                 rollSingleDicesWith8Sides()
                 //set dice2View to be removed to only display 1 dice
                 binding.diceImage.setVisibility(View.GONE)
-            }else if(useDoubleDices==true){
+            }else {
                 rollDoubleDicesWith8Sides()
                 binding.diceImage.setVisibility(View.VISIBLE)
             }
