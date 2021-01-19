@@ -3,10 +3,8 @@ package com.strixtechnology.diceroller
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.ContextMenu
-import android.view.Menu
-import android.view.MenuItem
-import android.view.View
+import android.renderscript.ScriptGroup
+import android.view.*
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -19,8 +17,8 @@ const val CURRENT_DICE2_VALUE_KEY = "current2"
 const val COUNT_VALUE_KEY = "count"
 const val DICE_SIDE_COUNT_6 = 6
 const val DICE_SIDE_COUNT_8 = 8
-var sides: Int =0
-var dices: Int =0
+var SIDES: Int = 0
+var DICES: Int = 0
 
 class MainActivity : AppCompatActivity() {
 
@@ -44,7 +42,9 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
         setSupportActionBar(binding.myToolbar)
-        binding.rollDice!!.setOnClickListener { setContent() }
+        binding.tvHint!!.text = "Welcome!Press Roll Button below to Display Default Dices. You can edit dice properties in the Setting Icon in the top-right corner"
+        binding.rollDice!!.setOnClickListener { setContent(); binding.tvHint!!.setVisibility(View.GONE) }
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -64,9 +64,9 @@ class MainActivity : AppCompatActivity() {
     /**
      * Get Number of sides from storage
      */
-    private fun getSidesCountFromStorage( ): Int{
+    private fun getSidesCountFromStorage(): Int {
         val pref = getSharedPreferences(getString(R.string.preference_file_key), MODE_PRIVATE)
-       return pref.getInt(KEY_DICE_SIDES, sides)
+        return pref.getInt(KEY_DICE_SIDES, SIDES)
     }
 
     /**
@@ -74,34 +74,35 @@ class MainActivity : AppCompatActivity() {
      */
     private fun getDicesCountFromStorage(): Int {
         val pref = getSharedPreferences(getString(R.string.preference_file_key), MODE_PRIVATE)
-        return pref.getInt(KEY_DICE_COUNT, dices)
+        return pref.getInt(KEY_DICE_COUNT, DICES)
     }
 
     /**
      * Display content according to number of dice and sides selected in settings Activity
      */
-    private fun setContent(){
+    private fun setContent() {
         val getSidesCount = getSidesCountFromStorage()
         val getDiceCount = getDicesCountFromStorage()
-         if(getSidesCount == 6){
-             if(getDiceCount == 1){
-                 rollSingleDicesWith6Sides()
-                 binding.diceImage.setVisibility(View.GONE)
-             }else{
-                 rollDoubleDicesWith6Sides()
-                 binding.diceImage.setVisibility(View.VISIBLE)
-             }
-         }else{
-             if(getDiceCount == 1){
-                 rollSingleDicesWith8Sides()
-                 binding.diceImage.setVisibility(View.GONE)
-             }else{
-                 rollDoubleDicesWith8Sides()
-                 binding.diceImage.setVisibility(View.VISIBLE)
-             }
-         }
+        if (getSidesCount == 6) {
+            if (getDiceCount == 1) {
+                rollSingleDicesWith6Sides()
+                binding.diceImage.setVisibility(View.GONE)
+            } else {
+                rollDoubleDicesWith6Sides()
+                binding.diceImage.setVisibility(View.VISIBLE)
+            }
+        } else {
+            if (getDiceCount == 1) {
+                rollSingleDicesWith8Sides()
+                binding.diceImage.setVisibility(View.GONE)
+            } else {
+                rollDoubleDicesWith8Sides()
+                binding.diceImage.setVisibility(View.VISIBLE)
+            }
+        }
     }
-     /**
+
+    /**
      * when dice is rolled view will be populated with setViewContent content
      */
     private fun rollDoubleDicesWith6Sides() {

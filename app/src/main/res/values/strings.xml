@@ -13,4 +13,5 @@
     <string name="choose_number_of_dice_to_roll">Choose Number of Dice to roll</string>
     <string name="settings">Settings</string>
     <string name="preference_file_key">com.strixtechnology.diceroller.prefs</string>
+    <string name="hint">hint</string>
 </resources>
