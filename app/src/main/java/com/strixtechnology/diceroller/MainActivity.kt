@@ -19,19 +19,19 @@ const val CURRENT_DICE2_VALUE_KEY = "current2"
 const val COUNT_VALUE_KEY = "count"
 const val DICE_SIDE_COUNT_6 = 6
 const val DICE_SIDE_COUNT_8 = 8
+var sides: Int =0
+var dices: Int =0
 
 class MainActivity : AppCompatActivity() {
 
     /**
      * Create new Dice object with 6 and 8 sides and roll it
      */
+
     var dice = Dice(DICE_SIDE_COUNT_6)
     var dice2 = Dice(DICE_SIDE_COUNT_6)
     var dice3 = Dice(DICE_SIDE_COUNT_8)
     var dice4 = Dice(DICE_SIDE_COUNT_8)
-
-    var sixSidesChecked: Boolean = false
-    var useSingleDice: Boolean = false
 
     private lateinit var binding: ActivityMainBinding
 
@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
         setSupportActionBar(binding.myToolbar)
-        binding.rollDice!!.setOnClickListener { rollDice() }
+        binding.rollDice!!.setOnClickListener { setContent() }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -62,32 +62,46 @@ class MainActivity : AppCompatActivity() {
     }
 
     /**
-     *
+     * Get Number of sides from storage
      */
-    private fun rollDice() {
-        //conditional formatting to roll certain number of dice/s and sides as filtered by user
-        if (sixSidesChecked) {
-            if (useSingleDice) {
-                rollSingleDicesWith6Sides()
-                //set dice2View to be removed to only display 1 dice
-                binding.diceImage.setVisibility(View.GONE)
-            } else {
-                rollDoubleDicesWith6Sides()
-                binding.diceImage.setVisibility(View.VISIBLE)
-            }
-        } else {
-            if (useSingleDice){
-                rollSingleDicesWith8Sides()
-                //set dice2View to be removed to only display 1 dice
-                binding.diceImage.setVisibility(View.GONE)
-            } else {
-                rollDoubleDicesWith8Sides()
-                binding.diceImage.setVisibility(View.VISIBLE)
-            }
-        }
+    private fun getSidesCountFromStorage( ): Int{
+        val pref = getSharedPreferences(getString(R.string.preference_file_key), MODE_PRIVATE)
+       return pref.getInt(KEY_DICE_SIDES, sides)
     }
 
     /**
+     * Get Number of Dice from storage
+     */
+    private fun getDicesCountFromStorage(): Int {
+        val pref = getSharedPreferences(getString(R.string.preference_file_key), MODE_PRIVATE)
+        return pref.getInt(KEY_DICE_COUNT, dices)
+    }
+
+    /**
+     * Display content according to number of dice and sides selected in settings Activity
+     */
+    private fun setContent(){
+        val getSidesCount = getSidesCountFromStorage()
+        val getDiceCount = getDicesCountFromStorage()
+         if(getSidesCount == 6){
+             if(getDiceCount == 1){
+                 rollSingleDicesWith6Sides()
+                 binding.diceImage.setVisibility(View.GONE)
+             }else{
+                 rollDoubleDicesWith6Sides()
+                 binding.diceImage.setVisibility(View.VISIBLE)
+             }
+         }else{
+             if(getDiceCount == 1){
+                 rollSingleDicesWith8Sides()
+                 binding.diceImage.setVisibility(View.GONE)
+             }else{
+                 rollDoubleDicesWith8Sides()
+                 binding.diceImage.setVisibility(View.VISIBLE)
+             }
+         }
+    }
+     /**
      * when dice is rolled view will be populated with setViewContent content
      */
     private fun rollDoubleDicesWith6Sides() {

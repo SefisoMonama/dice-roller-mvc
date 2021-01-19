@@ -75,7 +75,6 @@ class SettingsActivity : AppCompatActivity() {
                 R.id.eightSides -> storeSidesCount(8)
             }
         }
-        //TODO: Set the listener for the other chipGroup
     }
 
 }
