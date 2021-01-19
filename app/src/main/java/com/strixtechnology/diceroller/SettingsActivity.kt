@@ -1,5 +1,6 @@
 package com.strixtechnology.diceroller
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
@@ -15,6 +16,11 @@ class SettingsActivity : AppCompatActivity() {
         setContentView(binding.root)
         setInitialValues()
         setChipGroupListeners()
+        binding.btnBackToMainActivity.text = "<-"
+        binding.btnBackToMainActivity.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun getDiceCountFromStorage(): Int {

@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
         setSupportActionBar(binding.myToolbar)
-        binding.tvHint!!.text = "Welcome!Press Roll Button below to Display Default Dices. You can edit dice properties in the Setting Icon in the top-right corner"
+        binding.tvHint!!.text = "Welcome!Press Roll Button to display Dices. You can edit dice properties in the Setting Icon in the top-right corner"
         binding.rollDice!!.setOnClickListener { setContent(); binding.tvHint!!.setVisibility(View.GONE) }
 
     }
@@ -210,6 +210,6 @@ class MainActivity : AppCompatActivity() {
         dice.currentDiceValue = savedInstanceState.getInt(CURRENT_DICE_VALUE_KEY)
         dice2.currentDiceValue = savedInstanceState.getInt(CURRENT_DICE2_VALUE_KEY)
         dice.rollCount = savedInstanceState.getInt(COUNT_VALUE_KEY)
-        //setViewContentsFor2Dices()
+        setContent()
     }
 }
