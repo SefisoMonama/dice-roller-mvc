@@ -10,11 +10,11 @@
         android:id="@+id/numberOfDice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="252dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/numberOfDiceToRoll"
         app:singleSelection="true">
 
         <com.google.android.material.chip.Chip
@@ -41,7 +41,9 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/numberOfDice"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chooseDiceSides"
         tools:text="Choose Number of Dice to roll" />
 
     <androidx.appcompat.widget.Toolbar
@@ -58,6 +60,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_chainStyle="packed"
         app:title="Settings"
         app:titleTextColor="#FAF5F5" />
 
@@ -70,16 +73,17 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/chooseDiceSides"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/settingsToolbar" />
 
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/chooseDiceSides"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="36dp"
         app:layout_constraintBottom_toTopOf="@+id/numberOfDiceToRoll"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chooseNumberOfSides"
         app:singleSelection="true">
 
         <com.google.android.material.chip.Chip
