@@ -46,10 +46,10 @@
         android:contentDescription="@string/todo"
         android:scaleType="centerInside"
         android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/rollDice"
+        app:layout_constraintBottom_toBottomOf="@+id/secondDiceImage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/secondDiceImage"
-        app:layout_constraintTop_toBottomOf="@+id/tvHint"
+        app:layout_constraintTop_toTopOf="@+id/secondDiceImage"
         tools:srcCompat="@drawable/dice_2" />
 
     <TextView

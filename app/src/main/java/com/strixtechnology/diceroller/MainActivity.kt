@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(view)
         setSupportActionBar(binding.myToolbar)
         binding.tvHint!!.text = "Welcome!Press Roll Button to display Dices. You can edit dice properties in the Setting Icon in the top-right corner"
-        binding.rollDice!!.setOnClickListener { binding.tvHint!!.setVisibility(View.INVISIBLE); setContent()}
+        binding.rollDice!!.setOnClickListener { binding.tvHint!!.setVisibility(View.GONE); setContent()}
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
