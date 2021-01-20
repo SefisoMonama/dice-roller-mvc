@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".MainActivity">
 
-        <item
+    <item
         android:id="@+id/action_favorite"
+        android:icon="@drawable/set"
         android:orderInCategory="300"
         android:title="@string/user"
-        android:icon="@drawable/set"
         app:showAsAction="ifRoom"></item>
 </menu>

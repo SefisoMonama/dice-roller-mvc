@@ -3,6 +3,8 @@ package com.strixtechnology.diceroller
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 
 import com.strixtechnology.diceroller.databinding.ActivitySettingsBinding
 
@@ -16,13 +18,17 @@ class SettingsActivity : AppCompatActivity() {
         setContentView(binding.root)
         setInitialValues()
         setChipGroupListeners()
-        binding.btnBackToMainActivity.text = "<-"
-        binding.btnBackToMainActivity.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-        }
+        //add back button in the settings toolbar
+        setSupportActionBar(binding.settingsToolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if(item.itemId == android.R.id.home){
+            onBackPressed()
+        }
+        return super.onOptionsItemSelected(item)
+    }
     private fun getDiceCountFromStorage(): Int {
         val prefs = getSharedPreferences(getString(R.string.preference_file_key), MODE_PRIVATE)
         return prefs.getInt(KEY_DICE_COUNT, DEFAULT_DICE_COUNT)
