@@ -15,4 +15,6 @@
     <string name="preference_file_key">com.strixtechnology.diceroller.prefs</string>
     <string name="hint">hint</string>
     <string name="home">Home</string>
+    <string name="dice_sides">Dice sides</string>
+    <string name="number_of_dices">Number of Dices</string>
 </resources>
