@@ -1,2 +1,2 @@
-<h1>Dice roller</h1>
-<h4>Dice roller application following MVVM design pattern</h4>
+#Dice roller
+Dice roller application following MVVM design pattern
