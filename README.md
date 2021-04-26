@@ -3,7 +3,9 @@
 <p>This app was designed to simplify the life of dice game players </p>
 <h3>Application Functionality</h3><hr>
 <ul>
-  <li>Add dice(with a single button click)</li>
+  <li>Add dice (with a single button click)</li>
   <li>Remove Dice. (N:B up to 1 dice - you cannot have 0 dice).</li>
   <li>Customize app theme (Dark and default (light) mode in-app).</li>
   <li>Choose Number of dice to roll ( 1 - 4 dices).</li>
+  <li>Dice animation (dice will show a roll effect when dice anim is 'enabled').</li>
+  <li>Display dice rolled total (if enable we'll show you sum of the dice/s rolled) <i>this feature wa </i></li>
